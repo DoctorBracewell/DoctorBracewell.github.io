@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-131237362-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-131237362-1');
+</script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <title>TUC Timeline</title>
+        <style>
+
+/* Custom Bar */
+::-webkit-scrollbar {
+    display:none;
+} 
+
+/* Horizontal Scrolling */
+body {
+  margin:0;
+  font-family:Georgia;
+}
+#container .box {
+  width:1000px;
+  height:1000px;
+  display:inline-block;
+  position:relative;
+  margin: 0;
+}
+#container .box > div {
+  font-size:96px;
+  color:#FFF;
+  position:absolute;
+  text-align: center;
+  padding: 10%;
+  margin: 0;
+}
+#container {
+  overflow-y:scroll;
+  overflow-x:hidden;
+  transform: rotate(270deg) translateX(-100%);
+  transform-origin: top left;
+  background-color:#999;
+  position:absolute;
+  width:100vh;
+  height:100vw;
+}
+#container2 {
+  transform: rotate(90deg) translateY(-100vh);
+  transform-origin: top left;
+  white-space:nowrap;
+  margin:0;
+}
+.start {
+    white-space:normal;
+}
+        </style>
+    </head>
+    <body>
+        <div id="container">
+            <div id="container2">
+                <div class="box start"><div>Hello welcome to your doom</div></div>
+                <div class="box" style="background-color:blue;margin:0"><div>Hi</div></div>
+                <div class="box" style="background-color:red;margin:0"><div>Blob</div></div>
+            </div>
+        </div>
+    </body>
+</html>
