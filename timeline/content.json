@@ -1,0 +1,134 @@
+{
+    "sandwhich-beginning":{
+        "content": "Bartholomew of Sandwhich discovers Native Americans who have been making trips to the Underland for hundreds of years for ritual purposes. He begins to migrate his followers down into the Underland.",
+        "parent": "sandwhich-start",
+        "gap": "50",
+        "date": "~1600"
+    },
+    "sandwhich-finished": {
+        "content": "It takes nearly 50 years for everyone to move down, but eventually they have enough supplies and seal the gates to the Overland forever.",
+        "parent": "sandwhich-start",
+        "gap": "0",
+        "date": "~1650"
+    },
+
+    "garden-of-hesperides": {
+        "content": "The King's brother-in-law, Hamnet, accidentally floods the Garden of Hesperides, killing countless numbers of all species, before going insane and fleeing to the Jungle.",
+        "parent": "set-up",
+        "gap": "25",
+        "date": "1990"
+    },
+    "gregor-luxa-birth": {
+        "content": "Both Gregor 'Campbell' and the heir to the throne, Luxa, are born. Gregor was born between the 8-15th of March, and Luxa's birthday is unknown.",
+        "parent": "set-up",
+        "gap": "25",
+        "date": "~1992"
+    },
+    "luxa-parents-death": {
+        "content": "The King and Queen are killed by Gnawers, and the Council will rule Regalia until Luxa comes of age.",
+        "parent": "set-up",
+        "gap": "25",
+        "date": "~1995"
+    },
+    "mr-cormaci-lee": {
+        "content": "Hamnet's son, Hazard, is born sometime around June/July in 1998. Mr. Cormaci dies in ~1998, and Gregor's father, 'Lee', gets lost in the Underland around January 2001, and Margaret 'Boots' is born soon after.",
+        "parent": "set-up",
+        "gap": "0",
+        "date": "~2000"
+    },
+
+    "gto-fall": {
+        "content": "Gregor and Boots first fall into the Underland somewhere around the 1st of June, 2003. Lizzie goes to camp.",
+        "parent": "gregor-the-overlander",
+        "gap": "20",
+        "date": "1st July 2003"
+    },
+    "gray-quest": {
+        "content": "Gregor discovers his father is alive and that he is the warrior and sets off to complete the Prophecy of Gray with the other eleven questers.",
+        "parent": "gregor-the-overlander",
+        "gap": "20",
+        "date": "3rd July 2003"
+    },
+    "gray-finale": {
+        "content": "Gregor fufills the Prophecy of Gray, rescues his father, destroys King Gorger's army and returns to Regalia a hero. Henry dies, and Ares rebonds with Gregor.",
+        "parent": "gregor-the-overlander",
+        "gap": "20",
+        "date": "5th July 2003"
+    },
+
+    "pob-fall": {
+        "content": "Gregor and Boots enter the Underland again and are rescused by Ares from rats, before returning to Regalia and learning about the Prophecy of Bane.",
+        "parent": "prophecy-of-bane",
+        "gap": "20",
+        "date": "13th December 2003"
+    },
+    "pob-quest": {
+        "content": "Gregor goes across the Waterway to complete the Prophecy of Bane with his companions, and learns that he is a rager.",
+        "parent": "prophecy-of-bane",
+        "gap": "20",
+        "date": "15th - 20th December 2003"
+    },
+    "pob-finale": {
+        "content": "Gregor refuses to kill Bane, entrusts it to Ripred, is saved from execution by Nerissa and returns to the Overland on the 23rd of December. Luxa and Aurora are rescued by Nibblers in the jungle, and Boots is reunited with Gregor. Ares catches the plague soon after the trip.",
+        "parent": "prophecy-of-bane",
+        "gap": "20",
+        "date": "20th - 23rd December 2003"
+    },
+
+    "cow-fall": {
+        "content": "Gregor and Boots and Grace return to the Underland with Nike, and learn of the Curse of the Warmbloods. Grace falls ill, and Boots and Gregor set off to find the cure. Hamnet is revealed to be alive.",
+        "parent": "curse-of-warmbloods",
+        "gap": "20",
+        "date": "7th March 2004"
+    },
+    "cow-quest": {
+        "content": "Gregor and the questers head to the Vineyard of Eyes to try and find a cure to the plague. They find Luxa and Aurora, but are attacked by cutters and subsequently decipher the true meaning of the Prophecy of Blood.",
+        "parent": "curse-of-warmbloods",
+        "gap": "20",
+        "date": "9th - 17th March 2004"
+    },
+    "cow-finale": {
+        "content": "The group returns to Regalia, and their theory is confirmed; the humans started the plague. Doctor Neevee is executed, Solovet placed under house arrest, and all plague victims (including the gnawers) start to be treated. Gregor reveals the truth about the Underland to Mrs. Cormaci.",
+        "parent": "curse-of-warmbloods",
+        "gap": "20",
+        "date": "19th March 2004"
+    },
+
+    "mos-fall": {
+        "content": "Lizzie goes to summer camp again and Ripred convinces Gregor to kill the Bane, but Gregor is attacked by Twirltongue and other rats under Regalia. Hazard has a party for his seventh birthday, but the nibblers call to Luxa for help.",
+        "parent": "mark-of-secret",
+        "gap": "20",
+        "date": "1st - 31st July 2004"
+    },
+    "mos-quest": {
+        "content": "Throughout the next few weeks, Gregor and Luxa unravel the mystery of where the Nibblers have gone, flying Queenshead, the Jungle, the Swag and finally the Firelands, and Luxa recites the <strong>Vow of the Dead</strong>, officially starting the war.",
+        "parent": "mark-of-secret",
+        "gap": "20",
+        "date": "1st - 20th August 2004"
+    },
+    "mos-finale": {
+        "content": "The truth about what where Gnawers are driving the Nibblers is revealed when they are massacared in a natural gas chamber, and the Prophecy of Secret is fufilled. Gregor and Ares return the children to Regalia whilst the others stay in the Firelands to protect and aid the remaining Nibblers, and Gregor finally retrieves Sandwhich's sword.",
+        "parent": "mark-of-secret",
+        "gap": "20",
+        "date": "20th - 30th August 2004"
+    },
+
+    "coc-start": {
+        "content": "The war has officially begun, but Gregor disobeys Solovet and returns to the Firelands just in time to help fight the Gnawers. Luxa faints from the volcanic ash, Gregor and Ares fly her back to Regalia, and Solovet imprisons Gregor, eventually leading him to learn echolocation.",
+        "parent": "code-of-claw",
+        "gap": "20",
+        "date": "1st - 6th September 2004"
+    },
+    "coc-quest": {
+        "content": "Nerissa releases Gregor, and Solovet learns of his love for Luxa. Gregor is put to work in the Code Room, where Lizzie eventually arrives and is reassured by Ripred. After Ripred promises to keep his family safe, Gregor allows Lizzie to stay and help break the code. Gregor faces The Bane for the first time, but Regalia is evacuated to the palace and Gregor injured.",
+        "parent": "code-of-claw",
+        "gap": "20",
+        "date": "6th - 25th September 2004"
+    },
+    "coc-finale": {
+        "content": "The Code of Claw is cracked by Lizzie, and a group is sent for the final battle. Lapblood's forces tip the battle in the human's favour, and Ripred reveals that he does not believe in Sandwhich's prophecies to Gregor. Gregor kills the Bane, Ares dying the process, before waking up in Regalia two weeks later. A peace treaty is eventually decided on, and Gregor and his family return to New York, knowing their memories will stay with them forever.",
+        "parent": "code-of-claw",
+        "gap": "20",
+        "date": "25th September - 17th October 2004"
+    }
+}
