@@ -1,0 +1,72 @@
+body {
+  margin: 0;
+}
+.home {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 14px;
+  text-decoration: none;
+  text-transform: uppercase;
+  background: transparent;
+  color: black;
+  border: 2px solid black;
+  display: inline-block;
+  padding: 10px 25px;
+  font-weight: 700;
+  -webkit-transition: 0.2s all;
+  transition: 0.2s all;
+  margin: 1%;
+  position: fixed;
+  top: 0;
+}
+
+.home:hover {
+  color: white;
+  border-color: white;
+}
+.btn {
+  text-align: center;
+  font-family: "Raleway", sans-serif;
+  font-size: 1.6em;
+  border: 2px solid black;
+  background: transparent;
+  border-radius: 5px;
+  padding: 10px;
+  transition: all 0.6s;
+  -webkit-transition: all 0.6s;
+  z-index: 10;
+}
+.generateColours {
+  position: fixed;
+  bottom: 35%;
+  width: 100%;
+  text-align: center;
+  z-index: 100;
+}
+.btn:hover {
+  color: #d8d8d8;
+  background: black;
+}
+button:focus {
+  outline: 0;
+}
+.box {
+  width: 25%;
+  height: 100vh;
+  position: relative;
+  float: left;
+  -webkit-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+}
+.hexCode {
+  font-family: "Josefin Sans", sans-serif;
+  text-align: center;
+  width: 100%;
+  font-size: 4em;
+  top: 40%;
+  position: relative;
+}
+@media only screen and (max-width: 420px) {
+  .hexCode {
+    font-size: 1em;
+  }
+}

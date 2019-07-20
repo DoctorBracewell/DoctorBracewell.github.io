@@ -1,4 +1,4 @@
-fetch('./content.json')
+fetch('https://drbracewell.co.uk/data/timeline-content.json')
    .then(response => {
        if (!response.ok) {
            throw new Error("HTTP error " + response.status);
