@@ -6,10 +6,10 @@ body {
 
 #changeHello {
   font-size: 250px;
-  font-family: "Yatra One", cursive;
+  font-family: 'Yatra One', cursive;
   position: absolute;
   left: 15%;
-  top: -10%;
+  top:-10%;
   width: 20vh;
   color: #080808;
 }
@@ -18,7 +18,7 @@ body {
   position: absolute;
   left: 60%;
   width: 20%;
-  font-family: "Comfortaa", cursive;
+  font-family: 'Comfortaa', cursive;
   font-size: 40px;
   text-align: center;
   top: 40%;
@@ -28,28 +28,28 @@ a.button1 {
   font-size: 20px;
   display: inline-block;
   padding: 0.35em 1.2em;
-  border: 0.1em solid #ffffff;
+  border: 0.1em solid #FFFFFF;
   margin: 0 0.3em 0.3em 0;
   border-radius: 0.12em;
   box-sizing: border-box;
   text-decoration: none;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-weight: 300;
-  color: #ffffff;
+  color: #FFFFFF;
   text-align: center;
   transition: all 0.2s;
 }
 
 a.button1:hover {
   color: #007a88;
-  background-color: #ffffff;
+  background-color: #FFFFFF;
 }
 
 .bgColour {
-  font-family: "Audiowide", cursive;
+  font-family: 'Audiowide', cursive;
   font-size: 15px;
   position: absolute;
   left: 2%;
   bottom: 2%;
-  text-align: center;
+  text-align: center
 }
