@@ -65,8 +65,9 @@ button:focus {
   top: 40%;
   position: relative;
 }
-@media only screen and (max-width: 420px) {
+
+@media (max-width: 1000px) {
   .hexCode {
-    font-size: 1em;
+    font-size: 2em;
   }
 }
