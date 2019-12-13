@@ -5,37 +5,138 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-131237362-1"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'UA-131237362-1');
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'UA-131237362-1');
     </script>
 
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_TRACKING_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'GA_TRACKING_ID');
+    </script>
     <title>DrBracewell</title>
     <meta charset="utf-8">
     <meta name="description" content="A generator for Wynncraft Mobs">
-    <link rel="shortcut icon" href="icons/index.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="http://drbracewell.co.uk/icons/index.ico" type="image/x-icon" />
     <meta name="keywords" content="">
 
     <link href="https://fonts.googleapis.com/css?family=Yatra+One" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <link href="css/index.css" rel="stylesheet">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script>
-        document.onload(() => {
-            let change = () => {
-                let bgcolour = ('#' + (Math.random() * 0xFFFFFF << 0).toString(16));
-                document.body.style.backgroundColor = bgcolour;
-            }
-            change()
-            setInterval(change, 2000);
-        });
-    </script>
+
+    <style>
+        body {
+            margin: 0;
+            transition: background-color 3s;
+            -webkit-transition: background-color 3s;
+        }
+        
+        #changeHello {
+            font-size: 250px;
+            font-family: 'Yatra One', cursive;
+            position: absolute;
+            left: 15%;
+            top:-10%;
+            width: 20vh;
+            color: #080808;
+        }
+        
+        .navigate {
+            position: absolute;
+            left: 60%;
+            width: 20%;
+            font-family: 'Comfortaa', cursive;
+            font-size: 40px;
+            text-align: center;
+            top: 40%;
+        }
+        
+        a.button1 {
+            font-size: 20px;
+            display: inline-block;
+            padding: 0.35em 1.2em;
+            border: 0.1em solid #FFFFFF;
+            margin: 0 0.3em 0.3em 0;
+            border-radius: 0.12em;
+            box-sizing: border-box;
+            text-decoration: none;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 300;
+            color: #FFFFFF;
+            text-align: center;
+            transition: all 0.2s;
+        }
+        
+        a.button1:hover {
+            color: #007a88;
+            background-color: #FFFFFF;
+        }
+        
+        .bgColour {
+            font-family: 'Audiowide', cursive;
+            font-size: 15px;
+            position: absolute;
+            left: 2%;
+            bottom: 2%;
+            text-align: center
+        }
+    </style>
 </head>
 
 <body>
     <h1 id="changeHello"><span style="font-size:350px;">H</span>i</h1>
+    <div class="bgColour"><span id="display"></span></div>
+    <div class="navigate">
+        Check out what I've made
+        <hr style="border: 2px solid black;border-radius:10px;" />
+        <a href="/generator.html" class="button1">Wynncraft Mob Generator</a>
+        <br />
+        <a href="/timeline.html" class="button1">TUC Timeline (WIP)</a>
+        <br />
+        <a href="/colours.html" class="button1">Random Colours</a>
+        <br />
+    </div>
+
 </body>
+<script>
+    $.cssHooks.backgroundColor = {
+        get: function(elem) {
+            if (elem.currentStyle)
+                var bg = elem.currentStyle["backgroundColor"];
+            else if (window.getComputedStyle)
+                var bg = document.defaultView.getComputedStyle(elem,
+                    null).getPropertyValue("background-color");
+            if (bg.search("rgb") == -1)
+                return bg;
+            else {
+                bg = bg.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+                function hex(x) {
+                    return ("0" + parseInt(x).toString(16)).slice(-2);
+                }
+                return "#" + hex(bg[1]) + hex(bg[2]) + hex(bg[3]);
+            }
+        }
+    }
+    function change() {
+        var bgcolour = ('#' + (Math.random() * 0xFFFFFF << 0).toString(16));
+        document.body.style.backgroundColor = bgcolour;
+    }
+    change()
+    setInterval(change, 2000);
+    setInterval(function() {
+        let currentColour = $("body").css("backgroundColor");
+        document.querySelector("#display").innerHTML = currentColour;
+    }, 1)
+</script>
+
 </html>
