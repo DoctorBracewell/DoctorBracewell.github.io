@@ -227,7 +227,7 @@ function generateYaml() {
     } else if (document.getElementById("mobType").value === 'player') {
         endYaml += "skin: \"" + $("#playerSkin").val() + "\"";
     } else if (document.getElementById("mobType").value === 'item') {
-        endYaml += "item: " + $("#item").val() + newLine;
+        endYaml += "item: " + $("#itemId").val() + newLine;
         endYaml += "itemdamage: " + $("#itemDam").val();
     } else if (document.getElementById("mobType").value === 'ocelot') {
         endYaml += "type: " + $("#catType").val() + newLine;
@@ -245,9 +245,9 @@ function generateYaml() {
     } else if (document.getElementById("mobType").value === 'slime') {
         endYaml += "size: " + $("#slimeSize").val();
     } else if (document.getElementById("mobType").value === 'villager') {
-        $("#villager").slideDown()
-    } else if (document.getElementById("mobType").value === 'witherskull') {
         endYaml += "profession: " + $("#villager").val();
+    } else if (document.getElementById("mobType").value === 'witherskull') {
+        endYaml += "blue: " + $("#witherSkull").val();
     } else if (document.getElementById("mobType").value === 'wolf') {
         endYaml += "angry: " + $("#wolfAnger").val() + newLine;
         endYaml += "sitting: " + $("#wolfSit").val() + newLine;
