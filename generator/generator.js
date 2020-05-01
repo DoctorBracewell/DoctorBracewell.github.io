@@ -45,6 +45,7 @@ function generateYaml() {
     var vanished = document.getElementById("vanished").value;
     var burning = document.getElementById("burning").value;
     var baby = document.getElementById("baby").value;
+    var bigcollider = document.getElementById("bigcollider").value;
 
     var spawnId = document.getElementById("spawnid").value;
     var maxSpawn = document.getElementById("maxspawn").value;
@@ -116,6 +117,7 @@ function generateYaml() {
         'boss: false' + newLine +
         'burning: ' + burning + newLine +
         'baby: ' + baby + newLine +
+        'bigCollider: ' + bigcollider + newLine +
         'projectileToMob: false' + newLine +
         'spawnedID: \'' + spawnId + '\'' + newLine +
         'maxSpawned: ' + maxSpawn + newLine +
