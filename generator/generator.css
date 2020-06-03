@@ -132,6 +132,7 @@ textarea {
 input:hover {
   box-shadow: 2px 8px 45px rgba(0, 0, 0, 0.23);
   transform: translate3D(0, -1px, 0);
+  z-index: 100;
 }
 select:hover {
   box-shadow: 2px 8px 45px rgba(0, 0, 0, 0.23);
@@ -288,4 +289,37 @@ a.elementButton:hover {
 .home:hover {
   color: #00a6ae;
   border-color: #00a6ae;
+}
+
+.donate-wrap {
+  position: fixed;
+  right: 1%;
+  top: 1%;
+  border: 2px solid black;
+  max-width: 15%;
+  display: flex;
+  flex-direction: column;
+}
+.donate-wrap * {
+  text-align: center;
+  font-family: "Oxygen", "Open Sans", sans-serif;
+  font-size: 13px;
+  padding: 5px;
+  margin: 5px;
+  z-index: 10000000000;
+}
+.donate {
+  text-decoration: none;
+  background-color: black;
+  width: auto;
+  height: auto;
+  padding: 10px;
+  font-family: "Josefin Sans", "Open Sans", sans-serif;
+  text-transform: uppercase;
+  color: #dcdcdc;
+  font-size: 17px;
+  transition: .2s
+}
+.donate:hover {
+  font-size: 19px;
 }
