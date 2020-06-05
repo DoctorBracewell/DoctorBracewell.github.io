@@ -7,11 +7,48 @@ document.querySelector(".cookies-accept").addEventListener("click", () => {
     document.querySelector("#cookies-popup").style.display = "none";
 })
 
+// Storage
+/*if (typeof(Storage) !== "undefined") {
+    
+    window.onbeforeunload = closingCode;
+
+    function closingCode(){
+        localStorage.setItem("vertices", control);
+
+        for (let element of  document.querySelectorAll(".form-input")) {
+            localStorage.setItem(element.name, element.value)
+        }   
+        return null;
+    }
+
+    window.onload = openingCode;
+
+    function openingCode() {
+        if (localStorage.getItem("vertices") === null) {
+            localStorage.setItem("vertices", 1)
+        }
+
+        for (let i = 0; i < parseInt(localStorage.getItem("vertices")) - 1; i++) {
+            newVertex()
+        }
+
+        Object.keys(localStorage).forEach(element => {
+            if (element === "cookies" || element === "vertices") return;
+            document.querySelector(`*[name="${element}"]`).value = localStorage[element];
+        });
+        return null;
+    }
+
+} else {}*/
+
+// Editors
 const commandsOut = CodeMirror.fromTextArea(document.querySelector("#commandsOut"), {mode: "", theme: "lesser-dark", lineNumbers: true, lineWrapping: true});
 const scriptsOut = CodeMirror.fromTextArea(document.querySelector("#scriptsOut"), {theme: "lesser-dark", lineNumbers: true, lineWrapping: true});
 
+
+// Big boy function
 function generateStuff() {
-    let cmds = ["--- Counting CMDS ---\n"], itemNum = document.querySelector("#item-number").value, x = document.querySelector("#stand").value.split(" ")[0], y = document.querySelector("#stand").value.split(" ")[1], z = document.querySelector("#stand").value.split(" ")[2], chest = document.querySelector("#chest").split(" ")
+    let cmds = ["--- Counting CMDS ---\n"], itemNum = document.querySelector("#item-number").value, x = document.querySelector("#stand").value.split()[0], y = document.querySelector("#stand").value.split()[1], z = document.querySelector("#stand").value.split()[2], chest = document.querySelector("#chest").value.split()
 
     for (let i = 0; i <= parseInt(itemNum); i++) {
         cmds.push(`/entitydata @e[type=ArmorStand,r=1,x=${x},y=${y},z=${z},tag=thTestCounter,score_thDungeonCounter_min=${i}${i !== parseInt(itemNum) ? `,score_thDungeonCounter=${i}` : ""}] {CustomName:"&a${i}&2/${itemNum}"}`)
@@ -21,13 +58,13 @@ function generateStuff() {
     
     cmds.push("\n--- CMDS When Activated ---\n")
     cmds.push(`/entitydata @e[type=ArmorStand,r=1,x=${x},y=${y},z=${z}] {CustomNameVisible:0b}`);
-    cmds.push(`/fill ${parseInt(chest[0])+1} ${parseInt(chest[1])+1} ${parseInt(chest[2])} ${parseInt(chest[0])+6} ${parseInt(ychest[1])+1} ${parseInt(chest[2])+1} diamond_block 0 replace gold_block 0`)
+    cmds.push(`/fill ${parseInt(chest[0])+1} ${parseInt(chest[1])+1} ${parseInt(chest[2])} ${parseInt(chest[0])+6} ${parseInt(chest[1])+1} ${parseInt(chest[2])+1} diamond_block 0 replace gold_block 0`)
 
     cmds.push("\n--- Reset CMDS ---\n")
     cmds.push(`/entitydata @e[type=ArmorStand,r=1,x=${x},y=${y},z=${z}] {CustomNameVisible:1b}`);
     cmds.push(`/clone ${chest[0]} ${parseInt(chest[1]) + 1} ${chest[2]} ${chest[0]} ${parseInt(chest[1]) + 1} ${chest[2]} ${chest[0]} ${chest[1]} ${chest[2]}`);
     cmds.push(`/scoreboard players set @e[type=ArmorStand,r=1,x=${x},y=${y},z=${z},tag=thTestCounter] thDungeonCounter 0`);
-    cmds.push(`/fill ${parseInt(chest[0])+1} ${parseInt(chest[1])+1} ${parseInt(chest[2])} ${parseInt(chest[0])+6} ${parseInt(ychest[1])+1} ${parseInt(chest[2])+1} gold_block 0 replace diamond_block 0`)
+    cmds.push(`/fill ${parseInt(chest[0])+1} ${parseInt(chest[1])+1} ${parseInt(chest[2])} ${parseInt(chest[0])+6} ${parseInt(chest[1])+1} ${parseInt(chest[2])+1} gold_block 0 replace diamond_block 0`)
     cmds.push(`/entitydata @e[type=ArmorStand,r=1,x=${x},y=${y},z=${z},tag=thTestCounter] {CustomName:"&a0&2/${itemNum}"}`);
 
     commandsOut.getDoc().setValue(cmds.join("\n\n"));
