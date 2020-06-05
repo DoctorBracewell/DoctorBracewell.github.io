@@ -216,6 +216,7 @@ html, body {
   margin: 0;
   background-color: #1B1B1B;
   color: rgb(99, 99, 99);
+  position: relative;
 }
 .footer a {
   color: #979797;
@@ -239,7 +240,7 @@ a.icon:hover {
 }
 
 .version-name {
-  position: sticky;
+  position: absolute;
   bottom: 1%;
   left: 1%;
 }
