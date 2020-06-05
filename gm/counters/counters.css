@@ -4,18 +4,8 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
-  display: flex;
-  flex-direction: column;
   font-family: "Oxygen", "Open Sans", sans-serif;
 }
-.main-wrap {
-  flex: 1 0 auto;
-  padding: 20px;
-  display: grid;
-  grid-template-columns: 50% 50%;
-  grid-template-rows: auto auto;
-}
-
 /* Root */
 #root-inputs {
   width: auto;
@@ -119,7 +109,7 @@ html, body {
 
 /* footer */
 .footer {
-  flex-shrink: 0;
+  flex-shrink: 1;
   font-family: "Arial", sans-serif;
   font-size: 11px;
   text-align: center;
@@ -127,7 +117,12 @@ html, body {
   margin: 0;
   background-color: #1B1B1B;
   color: rgb(99, 99, 99);
-  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.footer p {
+  margin: 1em 0;
 }
 .footer a {
   color: #979797;
@@ -136,7 +131,7 @@ html, body {
 .footer a:hover {
   color: #dddddd;
   text-decoration: underline;
-  transition: all 0.3s ease;
+  transition: all 0.5s;
 }
 a.icon:hover {
   text-decoration: none;
@@ -144,7 +139,6 @@ a.icon:hover {
 .footer a:visted {
   color: #979797;
 }
-
 .icon * {
   font-size: 22px;
   padding: 5px 20px;

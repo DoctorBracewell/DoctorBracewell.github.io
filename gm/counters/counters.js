@@ -13,8 +13,8 @@ if (typeof(Storage) !== "undefined") {
     window.onbeforeunload = closingCode;
 
     function closingCode(){
-        for (let element of  document.querySelectorAll(".form-input")) {
-            localStorage.setItem(element.name, element.value)
+        for (let element of document.querySelectorAll(".form-input")) {
+            localStorage.setItem(`CNT-${element.name}`, element.value)
         }   
         return null;
     }
@@ -22,9 +22,11 @@ if (typeof(Storage) !== "undefined") {
     window.onload = openingCode;
 
     function openingCode() {
+        if (localStorage.getItem("item-number")) localStorage.clear()
         Object.keys(localStorage).forEach(element => {
-            if (element === "cookies") return;
-            document.querySelector(`*[name="${element}"]`).value = localStorage[element];
+            if (element.includes("CNT-")) {
+                document.querySelector(`*[name="${element.replace("CNT-", "")}"]`).value = localStorage[element];
+            }
         });
         return null;
     }

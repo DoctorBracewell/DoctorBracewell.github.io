@@ -69,10 +69,10 @@ if (typeof(Storage) !== "undefined") {
     window.onbeforeunload = closingCode;
 
     function closingCode(){
-        localStorage.setItem("vertices", control);
+        localStorage.setItem("PS-vertices", control);
 
-        for (let element of  document.querySelectorAll(".form-input")) {
-            localStorage.setItem(element.name, element.value)
+        for (let element of document.querySelectorAll(".form-input")) {
+            localStorage.setItem(`PS-${element.name}`, element.value)
         }   
         return null;
     }
@@ -80,17 +80,21 @@ if (typeof(Storage) !== "undefined") {
     window.onload = openingCode;
 
     function openingCode() {
-        if (localStorage.getItem("vertices") === null) {
-            localStorage.setItem("vertices", 1)
+        if (localStorage.getItem("gamemode")) localStorage.clear()
+
+        if (localStorage.getItem("PS-vertices") === null) {
+            localStorage.setItem("PS-vertices", 1)
         }
 
-        for (let i = 0; i < parseInt(localStorage.getItem("vertices")) - 1; i++) {
+        for (let i = 0; i < parseInt(localStorage.getItem("PS-vertices")) - 1; i++) {
             newVertex()
         }
 
         Object.keys(localStorage).forEach(element => {
-            if (element === "cookies" || element === "vertices") return;
-            document.querySelector(`*[name="${element}"]`).value = localStorage[element];
+            if (element === "PS-vertices") return;
+            if (element.includes("PS-")) {
+                document.querySelector(`*[name="${element.replace("PS-", "")}"]`).value = localStorage[element];
+            }
         });
         return null;
     }
@@ -98,22 +102,22 @@ if (typeof(Storage) !== "undefined") {
 } else {}
 
 function deleteAll() {
-    let saved = {
-        cookies: localStorage.getItem("cookies"),
-        gamemode: localStorage.getItem("gamemode"),
-        invisible: localStorage.getItem("invisible"),
-        startSnippet: localStorage.getItem("startSnippet"),
-        endSnippet: localStorage.getItem("endSnippet")
-    },
+    let saved = [
+        "PS-gamemode",
+        "PS-invisible",
+        "PS-startSnippet",
+        "PS-endSnippet"
+    ],
     vertices = document.getElementsByClassName('vertex-box').length > 0 ? document.getElementsByClassName('vertex-box') : [];
 
     while (vertices[0]) {
         vertices[0].parentNode.removeChild(vertices[0])
     }
 
-    localStorage.clear();
-    for (let i in saved) {
-        localStorage.setItem(i, saved[i])
+    for (let element in localStorage) {
+        if (!element.includes("PS-")) continue;
+        if (saved.includes(element)) continue;
+        localStorage.removeItem(element)
     }
 
     control = 1;
@@ -195,21 +199,21 @@ function generatePath(vertexA, vertexB) {
       }
 
     let distance = {
-        x: 0 - (parseInt(vertexA.cords.x) - parseInt(vertexB.cords.x)),
-        y: 0 - (parseInt(vertexA.cords.y) - parseInt(vertexB.cords.y)),
-        z: 0 - (parseInt(vertexA.cords.z) - parseInt(vertexB.cords.z)),
-        yaw: 0 - (parseInt(vertexA.view.yaw) - parseInt(vertexB.view.yaw)),
-        pitch: 0 - (parseInt(vertexA.view.pitch) - parseInt(vertexB.view.pitch))
+        x: 0 - (parseFloat(vertexA.cords.x) - parseFloat(vertexB.cords.x)),
+        y: 0 - (parseFloat(vertexA.cords.y) - parseFloat(vertexB.cords.y)),
+        z: 0 - (parseFloat(vertexA.cords.z) - parseFloat(vertexB.cords.z)),
+        yaw: 0 - (parseFloat(vertexA.view.yaw) - parseFloat(vertexB.view.yaw)),
+        pitch: 0 - (parseFloat(vertexA.view.pitch) - parseFloat(vertexB.view.pitch))
     },
     perBlock = objectMap(distance, (value) => {
         return (value / (parseInt(vertexB.time * 25)))
     }),
     tracker = {
-        x: parseInt(vertexA.cords.x),
-        y: parseInt(vertexA.cords.y),
-        z: parseInt(vertexA.cords.z),
-        yaw: parseInt(vertexA.view.yaw),
-        pitch: parseInt(vertexA.view.pitch)
+        x: parseFloat(vertexA.cords.x),
+        y: parseFloat(vertexA.cords.y),
+        z: parseFloat(vertexA.cords.z),
+        yaw: parseFloat(vertexA.view.yaw),
+        pitch: parseFloat(vertexA.view.pitch)
     },
     finishedCode = ""
 
