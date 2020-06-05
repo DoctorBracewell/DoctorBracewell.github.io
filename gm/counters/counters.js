@@ -21,13 +21,13 @@ function generateStuff() {
     
     cmds.push("\n--- CMDS When Activated ---\n")
     cmds.push(`/entitydata @e[type=ArmorStand,r=1,x=${x},y=${y},z=${z}] {CustomNameVisible:0b}`);
-    cmds.push(`/fill ${x+1} ${y+1} ${z} ${x+6} ${y+1} ${z+1} diamond_block 0 replace gold_block 0`)
+    cmds.push(`/fill ${parseInt(x)+1} ${parseInt(y)+1} ${parseInt(z)} ${parseInt(x)+6} ${parseInt(y)+1} ${parseInt(z)+1} diamond_block 0 replace gold_block 0`)
 
     cmds.push("\n--- Reset CMDS ---\n")
     cmds.push(`/entitydata @e[type=ArmorStand,r=1,x=${x},y=${y},z=${z}] {CustomNameVisible:1b}`);
     cmds.push(`/clone ${document.querySelector("#x-chest").value} ${document.querySelector("#y-chest").value + 1} ${document.querySelector("#z-chest").value} ${document.querySelector("#x-chest").value} ${document.querySelector("#y-chest").value + 1} ${document.querySelector("#z-chest").value} ${document.querySelector("#x-chest").value} ${document.querySelector("#y-chest").value} ${document.querySelector("#z-chest").value}`);
     cmds.push(`/scoreboard players set @e[type=ArmorStand,r=1,x=${x},y=${y},z=${z},tag=thTestCounter] thDungeonCounter 0`);
-    cmds.push(`/fill ${x+1} ${y+1} ${z} ${x+6} ${y+1} ${z+1} gold_block 0 replace diamond_block 0`)
+    cmds.push(`/fill ${parseInt(x)+1} ${parseInt(y)+1} ${parseInt(z)} ${parseInt(x)+6} ${parseInt(y)+1} ${parseInt(z)+1} gold_block 0 replace diamond_block 0`)
     cmds.push(`/entitydata @e[type=ArmorStand,r=1,x=${x},y=${y},z=${z},tag=thTestCounter] {CustomName:"&a0&2/${itemNum}"}`);
 
     commandsOut.getDoc().setValue(cmds.join("\n\n"));
