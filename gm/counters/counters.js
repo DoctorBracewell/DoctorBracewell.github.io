@@ -50,17 +50,22 @@ const scriptsOut = CodeMirror.fromTextArea(document.querySelector("#scriptsOut")
 function generateStuff() {
     let cmds = ["--- Counting CMDS ---\n"], itemNum = document.querySelector("#item-number").value, x = document.querySelector("#stand").value.split(" ")[0], y = document.querySelector("#stand").value.split(" ")[1], z = document.querySelector("#stand").value.split(" ")[2], chest = document.querySelector("#chest").value.split(" ")
 
-    for (let i = 0; i <= parseInt(itemNum); i++) {
-        cmds.push(`/entitydata @e[type=ArmorStand,r=1,x=${x},y=${y},z=${z},tag=thTestCounter,score_thDungeonCounter_min=${i}${i !== parseInt(itemNum) ? `,score_thDungeonCounter=${i}` : ""}] {CustomName:"&a${i}&2/${itemNum}"}`)
+    if (parseInt(itemNum) > 1) {
+        for (let i = 0; i <= parseInt(itemNum); i++) {
+            cmds.push(`/entitydata @e[type=ArmorStand,r=1,x=${x},y=${y},z=${z},tag=thTestCounter,score_thDungeonCounter_min=${i}${i !== parseInt(itemNum) ? `,score_thDungeonCounter=${i}` : ""}] {CustomName:"&a${i}&2/${itemNum}"}`)
+        }
     }
-    cmds.push(`/execute @e[type=ArmorStand,r=1,x=${x},y=${y},z=${z},tag=thTestCounter,score_thDungeonCounter_min=${itemNum}] ~ ~ ~ /fill x1 y1 z1 x2 y2 z2 redstone_block 0 replace gold_block 0`);
+
+    cmds.push(`/execute @e[type=ArmorStand,r=1,x=${x},y=${y},z=${z},tag=thTestCounter,score_thDungeonCounter_min=${itemNum}] ~ ~ ~ /fill ${parseInt(chest[0]) + 6} ${chest[1]} ${parseInt(chest[2]) + 5} ${parseInt(chest[0]) + 6} ${chest[1]} ${parseInt(chest[2]) + 5} redstone_block 0 replace gold_block 0`);
     cmds.push(`/execute @e[type=ArmorStand,r=1,x=${x},y=${y},z=${z},tag=thTestCounter,score_thDungeonCounter_min=${itemNum}] ~ ~ ~ /setblock ${chest[0]} ${chest[1]} ${chest[2]} barrier`);
+    cmds.push(`/setblock ${parseInt(chest[0]) + 6} ${chest[1]} ${parseInt(chest[2]) + 9}`)
     
     cmds.push("\n--- CMDS When Activated ---\n")
     cmds.push(`/entitydata @e[type=ArmorStand,r=1,x=${x},y=${y},z=${z}] {CustomNameVisible:0b}`);
     cmds.push(`/fill ${parseInt(chest[0])+1} ${parseInt(chest[1])+1} ${parseInt(chest[2])} ${parseInt(chest[0])+6} ${parseInt(chest[1])+1} ${parseInt(chest[2])+1} diamond_block 0 replace gold_block 0`)
 
     cmds.push("\n--- Reset CMDS ---\n")
+    cmds.push(`/setblock ${parseInt(chest[0]) + 6} ${chest[1]} ${parseInt(chest[2]) + 5} gold_block`)
     cmds.push(`/entitydata @e[type=ArmorStand,r=1,x=${x},y=${y},z=${z}] {CustomNameVisible:1b}`);
     cmds.push(`/clone ${chest[0]} ${parseInt(chest[1]) + 1} ${chest[2]} ${chest[0]} ${parseInt(chest[1]) + 1} ${chest[2]} ${chest[0]} ${chest[1]} ${chest[2]}`);
     cmds.push(`/scoreboard players set @e[type=ArmorStand,r=1,x=${x},y=${y},z=${z},tag=thTestCounter] thDungeonCounter 0`);
