@@ -56,7 +56,6 @@ function generateStuff() {
             cmds.push(`/entitydata @e[type=ArmorStand,r=1,x=${x},y=${y},z=${z},tag=thTestCounter,score_thDungeonCounter_min=${i}${i !== parseInt(itemNum) ? `,score_thDungeonCounter=${i}` : ""}] {CustomName:"&a${i}&2/${itemNum}"}`)
         }
         cmds.push(`/execute @e[type=ArmorStand,r=1,x=${x},y=${y},z=${z},tag=thTestCounter,score_thDungeonCounter_min=${itemNum}] ~ ~ ~ /fill x y z x y z redstone_block 0 replace gold_block 0`);
-        cmds.push(`/execute @e[type=ArmorStand,r=1,x=${x},y=${y},z=${z},tag=thTestCounter,score_thDungeonCounter_min=${itemNum}] ~ ~ ~ /setblock ${parseInt(chest[0])} ${chest[1]} ${parseInt(chest[2])} barrier`)
     } else {
         cmds.push("\n--- CMDS When Activated ---\n")
         cmds.push(`/entitydata @e[type=ArmorStand,r=1,x=${x},y=${y},z=${z},tag=thTestCounter] {CustomName:"&a1&2/1"}`)
@@ -119,7 +118,7 @@ if (player.getData("clickDoor", false)) {
     player.execute("scoreboard players add @e[type=ArmorStand,r=1,x=${x},y=${y},z=${z},tag=thTestCounter] thDungeonCounter 0");
     while(player.takeItem(${chest[0]}, ${chest[1]}, ${chest[2]})){
         player.execute("scoreboard players add @e[type=ArmorStand,r=1,x=${x},y=${y},z=${z},tag=thTestCounter] thDungeonCounter 1");
-        world.activateCommandBlock(${parseInt(x) + 1} ${y} ${z});
+        world.activateCommandBlock(${parseInt(chest[0]) + 1}, ${chest[1]}, ${chest[2]});
     }
     player.setData("clickDoor", false);
 }
