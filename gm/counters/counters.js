@@ -21,11 +21,13 @@ function generateStuff() {
     
     cmds.push("\n--- CMDS When Activated ---\n")
     cmds.push(`/entitydata @e[type=ArmorStand,r=1,x=${x},y=${y},z=${z}] {CustomNameVisible:0b}`);
+    cmds.push(`/fill ${x+1} ${y+1} ${z} ${x+6} ${y+1} ${z+1} diamond_block 0 replace gold_block 0`)
 
     cmds.push("\n--- Reset CMDS ---\n")
     cmds.push(`/entitydata @e[type=ArmorStand,r=1,x=${x},y=${y},z=${z}] {CustomNameVisible:1b}`);
-    cmds.push(`/clone ${document.querySelector("#x-chest").value} ${document.querySelector("#y-chest").value + 1} ${document.querySelector("#x-chest").value} ${document.querySelector("#y-chest").value + 1} ${document.querySelector("#z-chest").value} ${document.querySelector("#x-chest").value} ${document.querySelector("#y-chest").value} ${document.querySelector("#z-chest").value}`);
+    cmds.push(`/clone ${document.querySelector("#x-chest").value} ${document.querySelector("#y-chest").value + 1} ${document.querySelector("#z-chest").value} ${document.querySelector("#x-chest").value} ${document.querySelector("#y-chest").value + 1} ${document.querySelector("#z-chest").value} ${document.querySelector("#x-chest").value} ${document.querySelector("#y-chest").value} ${document.querySelector("#z-chest").value}`);
     cmds.push(`/scoreboard players set @e[type=ArmorStand,r=1,x=${x},y=${y},z=${z},tag=thTestCounter] thDungeonCounter 0`);
+    cmds.push(`/fill ${x+1} ${y+1} ${z} ${x+6} ${y+1} ${z+1} gold_block 0 replace diamond_block 0`)
     cmds.push(`/entitydata @e[type=ArmorStand,r=1,x=${x},y=${y},z=${z},tag=thTestCounter] {CustomName:"&a0&2/${itemNum}"}`);
 
     commandsOut.getDoc().setValue(cmds.join("\n\n"));
@@ -34,48 +36,49 @@ function generateStuff() {
     let scripts = ["--- onEnter ---\n"];
 
     scripts.push(`
-    // Activated via Script Region (onEnter)
-    // Script Region Armor Stand located @ 
-    // Safe teleportation area located @ 
-    
-    var X = WYNNMOB;
-    player.setData("at_test", true);
-    
-    X.setType("thom-invmob3x3");
-    X.spawn(${Math.sign(parseInt(document.querySelector("#x-stand").value)) ? parseInt(document.querySelector("#x-stand").value) + 0.5 : parseInt(document.querySelector("#x-stand").value) - 0.5}, ${document.querySelector("#y-stand").value + 1}, ${Math.sign(parseInt(document.querySelector("#z-stand").value)) ? parseInt(document.querySelector("#z-stand").value) + 0.5 : parseInt(document.querySelector("#z-stand").value) - 0.5});
-    X.say("&0");
-    X.setOnRightClickScript("${document.querySelector("#script-folder").value.slice(-1) === "/" ? document.querySelector("#script-folder").value : `${document.querySelector("#script-folder").value}/`}onRightClick");
-    X.setOnlyVisibleToPlayer;
-    X.setSpeed(0);
-    X.setInvulnerable(true);
-    
-    while(player.getData("at_test", true)){ script.wait(50); }`);
+// Activated via Script Region (onEnter)
+// Script Region Armor Stand located @ 
+// Safe teleportation area located @ 
+
+var X = WYNNMOB;
+player.setData("at_test", true);
+
+X.setType("thom-invmob3x3");
+X.spawn(${Math.sign(parseInt(document.querySelector("#x-stand").value)) ? parseInt(document.querySelector("#x-stand").value) + 0.5 : parseInt(document.querySelector("#x-stand").value) - 0.5}, ${document.querySelector("#y-stand").value + 1}, ${Math.sign(parseInt(document.querySelector("#z-stand").value)) ? parseInt(document.querySelector("#z-stand").value) + 0.5 : parseInt(document.querySelector("#z-stand").value) - 0.5});
+X.say("&0");
+X.setOnRightClickScript("${document.querySelector("#script-folder").value.slice(-1) === "/" ? document.querySelector("#script-folder").value : `${document.querySelector("#script-folder").value}/`}onRightClick");
+X.setOnlyVisibleToPlayer;
+X.setSpeed(0);
+X.setInvulnerable(true);
+
+while(player.getData("at_test", true)){ script.wait(50); }`
+    );
 
     scripts.push(`
-    \n--- onRightClick ---\n
-    // Activated via Script (onRightClick)
-    // Script located @ ${document.querySelector("#script-folder").value.slice(-1) === "/" ? document.querySelector("#script-folder").value : `${document.querySelector("#script-folder").value}/`}onEnter
+\n--- onRightClick ---\n
+// Activated via Script (onRightClick)
+// Script located @ ${document.querySelector("#script-folder").value.slice(-1) === "/" ? document.querySelector("#script-folder").value : `${document.querySelector("#script-folder").value}/`}onEnter
 
-    // For multiple items
-    if (player.getData("clickDoor", false)) {
-        player.setData("clickDoor", true);
-        player.execute("scoreboard players set @e[type=ArmorStand,r=1,x=${x},y=${y},z=${z},tag=thTestCounter,score_thDungeonCounter_min=1] thDungeonCounter 0 {CustomName:"&a0&2/${itemNum}"}");
-        player.execute("scoreboard players add @e[type=ArmorStand,r=1,x=${x},y=${y},z=${z},tag=thTestCounter] thDungeonCounter 0");
-        while(player.takeItem(${document.querySelector("#x-chest").value}, ${document.querySelector("#y-chest").value}, ${document.querySelector("#z-chest").value})){
-            player.execute("scoreboard players add @e[type=ArmorStand,r=1,x=${x},y=${y},z=${z},tag=thTestCounter] thDungeonCounter 1");
-            world.activateCommandBlock(x, y, z);
-        }
-        player.setData("clickDoor", false);
+// For multiple items
+if (player.getData("clickDoor", false)) {
+    player.setData("clickDoor", true);
+    player.execute("scoreboard players set @e[type=ArmorStand,r=1,x=${x},y=${y},z=${z},tag=thTestCounter,score_thDungeonCounter_min=1] thDungeonCounter 0 {CustomName:"&a0&2/${itemNum}"}");
+    player.execute("scoreboard players add @e[type=ArmorStand,r=1,x=${x},y=${y},z=${z},tag=thTestCounter] thDungeonCounter 0");
+    while(player.takeItem(${document.querySelector("#x-chest").value}, ${document.querySelector("#y-chest").value}, ${document.querySelector("#z-chest").value})){
+        player.execute("scoreboard players add @e[type=ArmorStand,r=1,x=${x},y=${y},z=${z},tag=thTestCounter] thDungeonCounter 1");
+        world.activateCommandBlock(x, y, z);
     }
+    player.setData("clickDoor", false);
+}
     `)
 
     scripts.push(`
-    \n--- onLeave ---\n
-    // Activated via Script Region (onLeave)
-    // Script Region Armor Stand located @ 
-    // Safe teleportation area located @ 
+\n--- onLeave ---\n
+// Activated via Script Region (onLeave)
+// Script Region Armor Stand located @ 
+// Safe teleportation area located @ 
 
-    player.removeData("at_test");
+player.removeData("at_test");
     `)
 
     
