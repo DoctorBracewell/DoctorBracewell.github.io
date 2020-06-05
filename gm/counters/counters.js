@@ -63,11 +63,12 @@ function generateStuff() {
 
     cmds.push(`${parseInt(itemNum) > 1 ? `/execute @e[type=ArmorStand,r=1,x=${x},y=${y},z=${z},tag=thTestCounter,score_thDungeonCounter_min=${itemNum}] ~ ~ ~ ` : ""}/setblock ${chest[0]} ${chest[1]} ${chest[2]} barrier`);
     
+    
     if (parseInt(itemNum) > 1) {
         cmds.push("\n--- CMDS When Activated ---\n")
+        cmds.push(`/fill ${parseInt(chest[0])+1} ${parseInt(chest[1])+1} ${parseInt(chest[2])} ${parseInt(chest[0])+6} ${parseInt(chest[1])+1} ${parseInt(chest[2])+1} diamond_block 0 replace gold_block 0`)
     }
 
-    cmds.push(`/fill ${parseInt(chest[0])+1} ${parseInt(chest[1])+1} ${parseInt(chest[2])} ${parseInt(chest[0])+6} ${parseInt(chest[1])+1} ${parseInt(chest[2])+1} diamond_block 0 replace gold_block 0`)
     cmds.push(`/entitydata @e[type=ArmorStand,r=1,x=${x},y=${y},z=${z}] {CustomNameVisible:0b}`);
 
     cmds.push("\n--- Reset CMDS ---\n")
@@ -95,7 +96,7 @@ var X = WYNNMOB;
 player.setData("at_test", true);
 
 X.setType("thom-invmob3x3");
-X.spawn(${Math.sign(parseInt(x)) ? parseInt(x) + 0.5 : parseInt(x) - 0.5}, ${parseInt(y) + 1}, ${Math.sign(parseInt(z)) ? parseInt(z) + 0.5 : parseInt(z) - 0.5});
+X.spawn(${parseInt(x) + 0.5}, ${parseInt(y) + 1}, ${parseInt(z) + 0.5});
 X.say("&0");
 X.setOnRightClickScript("${document.querySelector("#script-folder").value.slice(-1) === "/" ? document.querySelector("#script-folder").value : `${document.querySelector("#script-folder").value}/`}onRightClick");
 X.setOnlyVisibleToPlayer;
@@ -125,8 +126,12 @@ if (player.getData("clickDoor", false)) {
     `)
     } else {
         scripts.push(`
+\n--- onRightClick ---\n
+// Activated via Script (onRightClick)
+// Script located @ ${document.querySelector("#script-folder").value.slice(-1) === "/" ? document.querySelector("#script-folder").value : `${document.querySelector("#script-folder").value}/`}onEnter
+
 if (player.takeItem(${chest[0]}, ${chest[1]}, ${chest[2]})){
-    player.execute("fill 210 35 1850 210 35 1850 redstone_block 0 replace gold_block 0");
+    player.execute("fill x y z x y z redstone_block 0 replace gold_block 0");
 }    
         `)
     }
