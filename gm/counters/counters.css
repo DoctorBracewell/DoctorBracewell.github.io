@@ -1,0 +1,157 @@
+/* Body setup + grid */
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  font-family: "Oxygen", "Open Sans", sans-serif;
+}
+.main-wrap {
+  flex: 1 0 auto;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: auto auto;
+}
+
+/* Root */
+#root-inputs {
+  width: auto;
+  height: auto;
+}
+.root-wrap {
+  height: auto;
+}
+.input {
+  padding: 10px;
+}
+
+/* Button */
+#generate-button {
+  height: 100%;
+  width: 100%;
+}
+.big-button-wrap {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+.big-button {
+  margin: auto;
+  background-color: rgb(39, 199, 39);
+  border-radius: 15px;
+  border: 2px solid green;
+  color: white;
+  height: 50%;
+  width: 60%;
+  text-align: center;
+  display: flex;
+  text-transform: uppercase;
+  font-size: 40px;
+}
+.big-button:hover {
+  cursor: pointer;
+}
+.big-button span {
+  margin: auto;
+}
+
+/* Outs */
+#output {
+  grid-column: 1 / span 2;
+}
+.outputs {
+  display: flex;
+  flex-direction: row;
+}
+.CodeMirror {
+  margin: 10px;
+  height: auto;
+  width: 100%;
+}
+/* cookies */
+#cookies-popup {
+  z-index: 100000;
+  max-width: 20vw;
+  background-color: rgb(184, 81, 83);
+  opacity: .8;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: none;
+  flex-direction: column;
+  transition: .2s all;
+}
+#cookies-popup:hover {
+  opacity: 1
+}
+#cookies-popup p {
+  text-align: center;
+  margin: auto;
+  padding: 10px;
+  font-family: "Montserrat", "Open Sans", sans-serif;
+  color: rgb(224, 224, 224);
+  cursor: default;
+}
+.accept-wrap {
+  display: flex;
+  margin: 0 0 10px 0;
+}
+.cookies-accept {
+  font-family: "Montserrat", "Open Sans", sans-serif;
+  color: rgb(31, 31, 31);
+  background-color: rgb(224, 224, 224);
+  font-size: 1.4em;
+  margin: auto;
+  width: 50%;
+  padding: 10px 0;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: 600;
+  transition: .2s all;
+}
+.cookies-accept:hover {
+  cursor: pointer;
+  transform: scale(1.05)
+}
+
+/* footer */
+.footer {
+  flex-shrink: 0;
+  font-family: "Arial", sans-serif;
+  font-size: 11px;
+  text-align: center;
+  line-height: 18px;
+  margin: 0;
+  background-color: #1B1B1B;
+  color: rgb(99, 99, 99);
+  position: relative;
+}
+.footer a {
+  color: #979797;
+  text-decoration: none;
+}
+.footer a:hover {
+  color: #dddddd;
+  text-decoration: underline;
+  transition: all 0.3s ease;
+}
+a.icon:hover {
+  text-decoration: none;
+}
+.footer a:visted {
+  color: #979797;
+}
+
+.icon * {
+  font-size: 22px;
+  padding: 5px 20px;
+}
+
+.version-name {
+  position: absolute;
+  bottom: 1%;
+  left: 1%;
+}

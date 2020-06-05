@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-131237362-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'UA-131237362-1');
+        </script>
+
+        <title>Wynnscript Counter Generator</title>
+        <meta charset="utf-8">
+        <meta name="description" content="A generator for wynncraft script counters.">
+        <link rel="shortcut icon" href="./../../icons/index.ico" type="image/x-icon" />
+        <meta name="keywords" content="">
+
+        <link rel="shortcut icon" href="https://drbracewell.co.uk/icons/wynn.ico" type="image/x-icon" />
+        <link href="https://fonts.googleapis.com/css2?family=Oxygen&display=swap" rel="stylesheet">
+        <link href="counters.css" rel="stylesheet">
+
+        <script src="https://kit.fontawesome.com/bf5ba8cfde.js" crossorigin="anonymous"></script>
+        
+        <script src="./../CodeMirror/codemirror.js" type="text/javascript"></script>
+        <link rel="stylesheet" href="./../CodeMirror/codemirror.css">
+        <link rel="stylesheet" href="./../CodeMirror/lesser-dark.css">
+        <script src="./../CodeMirror/javascript.js" type="text/javascript"></script>
+    </head>
+
+    <body>
+        <section id="cookies-popup">
+            <p>This website uses cookies (little pieces of data) to help me learn more about how many people visit my site, and other boring statistics. By continuing to use this site, you consent to the use of these cookies.</p>
+            <div class="accept-wrap">
+                <a class="cookies-accept">ACCEPT</a>
+            </div>
+        </section>
+
+        <div class="main-wrap">
+            <section id="root-inputs">
+                <div class="root-wrap">
+
+                    <div class="input stand-cords">
+                        Armor Stand Cords
+                        <br />
+                        <label for="x-stand">X:</label>
+                        <input class="form-input" name="x-stand" type="number" id="x-stand"/>
+                        <br />
+                        <label for="y-stand">Y:</label>
+                        <input class="form-input" name="y-stand" type="number" id="y-stand"/>
+                        <br />
+                        <label for="z-stand">Z:</label>
+                        <input class="form-input" name="z-stand" type="number" id="z-stand"/>
+                        <br />
+                    </div>
+
+                    <div class="input chest-cords">
+                        Bottom Chest Cords
+                        <br />
+                        <label for="x-chest">X:</label>
+                        <input class="form-input" name="x-chest" type="number" id="x-chest"/>
+                        <br />
+                        <label for="y-chest">Y:</label>
+                        <input class="form-input" name="y-chest" type="number" id="y-chest"/>
+                        <br />
+                        <label for="z-chest">Z:</label>
+                        <input class="form-input" name="z-chest" type="number" id="z-chest"/>
+                        <br />
+                    </div>
+
+                    <div class="input">
+                        <label for="item-number">Amount of Item:</label>
+                        <input class="form-input" name="item-number" type="number" id="item-number"/>
+                    </div>
+
+                    <div class="input">
+                        <label for="script-folder">Script Folder:</label>
+                        <input class="form-input" name="script-folder" type="text" id="script-folder"/>
+                    </div>
+
+                </div>
+            </section>
+
+            <section id="generate-button">
+                <div class="big-button-wrap">
+                    <a class="big-button" onclick="generateStuff()"><span>Generate Scripts + Commands</span></a>
+                </div>
+            </section>
+
+
+            <section id="output">
+                <div class="outputs">
+                    <textarea class="snippet-text" id="commandsOut"></textarea>
+                    <textarea class="snippet-text" id="scriptsOut"></textarea>
+                </div>
+            </section>
+        </div>
+
+    
+        <footer class="footer">
+            <p class="version-name">Release 1.0.0</p>
+            <p>
+                Wynnscript tools for <a href="https://wynncraft.com/">Wynncraft</a> GameMasters.
+                <br/>
+                <a class="icon" href="https://github.com/DoctorBracewell/DoctorBracewell.github.io/gm">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a class="icon" href="https://drbracewell.co.uk/gm">
+                    <i class="fas fa-home"></i>
+                </a>
+                <br/>
+                Website made by <a href="https://drbracewell.co.uk">DrBracewell</a> | © 2020 - All rights reserved.
+                <br/>
+                <a class="icon" href="https://github.com/DoctorBracewell/">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a class="icon" href="mailto:doctorbracewell@gmail.com">
+                    <i class="fas fa-at"></i>
+                </a>
+                <a class="icon" href="https://drbracewell.co.uk">
+                    <i class="fas fa-home"></i>
+                </a>
+            </p>
+        </footer>
+
+        <script src="counters.js" type="text/javascript"></script>
+    </body>
+</html>
