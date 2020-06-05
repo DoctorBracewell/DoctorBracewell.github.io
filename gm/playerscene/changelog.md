@@ -20,3 +20,7 @@
   * Saves all root inputs, amount of vertices, all data in vertices
   * Doesn't save generated code
 * Footer with links to github source, homepage and contact
+
+## alpha | 0.1.1
+* Revamped localStorage with page prefixes
+* Changed to parseFloats for decimal co-ordinates.
