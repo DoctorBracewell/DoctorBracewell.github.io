@@ -239,7 +239,7 @@ a.icon:hover {
 }
 
 .version-name {
-  position: absolute;
+  position: sticky;
   bottom: 1%;
   left: 1%;
 }
