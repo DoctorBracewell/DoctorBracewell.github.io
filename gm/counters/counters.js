@@ -11,23 +11,23 @@ const commandsOut = CodeMirror.fromTextArea(document.querySelector("#commandsOut
 const scriptsOut = CodeMirror.fromTextArea(document.querySelector("#scriptsOut"), {theme: "lesser-dark", lineNumbers: true, lineWrapping: true});
 
 function generateStuff() {
-    let cmds = ["--- Counting CMDS ---\n"], itemNum = document.querySelector("#item-number").value, x = document.querySelector("#x-stand").value, y = document.querySelector("#y-stand").value, z = document.querySelector("#z-stand").value
+    let cmds = ["--- Counting CMDS ---\n"], itemNum = document.querySelector("#item-number").value, x = document.querySelector("#stand").value.split(" ")[0], y = document.querySelector("#stand").value.split(" ")[1], z = document.querySelector("#stand").value.split(" ")[2], chest = document.querySelector("#chest").split(" ")
 
     for (let i = 0; i <= parseInt(itemNum); i++) {
         cmds.push(`/entitydata @e[type=ArmorStand,r=1,x=${x},y=${y},z=${z},tag=thTestCounter,score_thDungeonCounter_min=${i}${i !== parseInt(itemNum) ? `,score_thDungeonCounter=${i}` : ""}] {CustomName:"&a${i}&2/${itemNum}"}`)
     }
     cmds.push(`/execute @e[type=ArmorStand,r=1,x=${x},y=${y},z=${z},tag=thTestCounter,score_thDungeonCounter_min=${itemNum}] ~ ~ ~ /fill x1 y1 z1 x2 y2 z2 redstone_block 0 replace gold_block 0`);
-    cmds.push(`/execute @e[type=ArmorStand,r=1,x=${x},y=${y},z=${z},tag=thTestCounter,score_thDungeonCounter_min=${itemNum}] ~ ~ ~ /setblock ${document.querySelector("#x-chest").value} ${document.querySelector("#y-chest").value} ${document.querySelector("#z-chest").value} barrier`);
+    cmds.push(`/execute @e[type=ArmorStand,r=1,x=${x},y=${y},z=${z},tag=thTestCounter,score_thDungeonCounter_min=${itemNum}] ~ ~ ~ /setblock ${chest[0]} ${chest[1]} ${chest[2]} barrier`);
     
     cmds.push("\n--- CMDS When Activated ---\n")
     cmds.push(`/entitydata @e[type=ArmorStand,r=1,x=${x},y=${y},z=${z}] {CustomNameVisible:0b}`);
-    cmds.push(`/fill ${parseInt(x)+1} ${parseInt(y)+1} ${parseInt(z)} ${parseInt(x)+6} ${parseInt(y)+1} ${parseInt(z)+1} diamond_block 0 replace gold_block 0`)
+    cmds.push(`/fill ${parseInt(chest[0])+1} ${parseInt(chest[1])+1} ${parseInt(chest[2])} ${parseInt(chest[0])+6} ${parseInt(ychest[1])+1} ${parseInt(chest[2])+1} diamond_block 0 replace gold_block 0`)
 
     cmds.push("\n--- Reset CMDS ---\n")
     cmds.push(`/entitydata @e[type=ArmorStand,r=1,x=${x},y=${y},z=${z}] {CustomNameVisible:1b}`);
-    cmds.push(`/clone ${document.querySelector("#x-chest").value} ${document.querySelector("#y-chest").value + 1} ${document.querySelector("#z-chest").value} ${document.querySelector("#x-chest").value} ${document.querySelector("#y-chest").value + 1} ${document.querySelector("#z-chest").value} ${document.querySelector("#x-chest").value} ${document.querySelector("#y-chest").value} ${document.querySelector("#z-chest").value}`);
+    cmds.push(`/clone ${chest[0]} ${parseInt(chest[1]) + 1} ${chest[2]} ${chest[0]} ${parseInt(chest[1]) + 1} ${chest[2]} ${chest[0]} ${chest[1]} ${chest[2]}`);
     cmds.push(`/scoreboard players set @e[type=ArmorStand,r=1,x=${x},y=${y},z=${z},tag=thTestCounter] thDungeonCounter 0`);
-    cmds.push(`/fill ${parseInt(x)+1} ${parseInt(y)+1} ${parseInt(z)} ${parseInt(x)+6} ${parseInt(y)+1} ${parseInt(z)+1} gold_block 0 replace diamond_block 0`)
+    cmds.push(`/fill ${parseInt(chest[0])+1} ${parseInt(chest[1])+1} ${parseInt(chest[2])} ${parseInt(chest[0])+6} ${parseInt(ychest[1])+1} ${parseInt(chest[2])+1} gold_block 0 replace diamond_block 0`)
     cmds.push(`/entitydata @e[type=ArmorStand,r=1,x=${x},y=${y},z=${z},tag=thTestCounter] {CustomName:"&a0&2/${itemNum}"}`);
 
     commandsOut.getDoc().setValue(cmds.join("\n\n"));
@@ -44,7 +44,7 @@ var X = WYNNMOB;
 player.setData("at_test", true);
 
 X.setType("thom-invmob3x3");
-X.spawn(${Math.sign(parseInt(document.querySelector("#x-stand").value)) ? parseInt(document.querySelector("#x-stand").value) + 0.5 : parseInt(document.querySelector("#x-stand").value) - 0.5}, ${parseInt(document.querySelector("#y-stand").value) + 1}, ${Math.sign(parseInt(document.querySelector("#z-stand").value)) ? parseInt(document.querySelector("#z-stand").value) + 0.5 : parseInt(document.querySelector("#z-stand").value) - 0.5});
+X.spawn(${Math.sign(parseInt(x)) ? parseInt(x) + 0.5 : parseInt(x) - 0.5}, ${parseInt(y) + 1}, ${Math.sign(parseInt(z)) ? parseInt(z) + 0.5 : parseInt(z) - 0.5});
 X.say("&0");
 X.setOnRightClickScript("${document.querySelector("#script-folder").value.slice(-1) === "/" ? document.querySelector("#script-folder").value : `${document.querySelector("#script-folder").value}/`}onRightClick");
 X.setOnlyVisibleToPlayer;
@@ -64,7 +64,7 @@ if (player.getData("clickDoor", false)) {
     player.setData("clickDoor", true);
     player.execute("scoreboard players set @e[type=ArmorStand,r=1,x=${x},y=${y},z=${z},tag=thTestCounter,score_thDungeonCounter_min=1] thDungeonCounter 0 {CustomName:"&a0&2/${itemNum}"}");
     player.execute("scoreboard players add @e[type=ArmorStand,r=1,x=${x},y=${y},z=${z},tag=thTestCounter] thDungeonCounter 0");
-    while(player.takeItem(${document.querySelector("#x-chest").value}, ${document.querySelector("#y-chest").value}, ${document.querySelector("#z-chest").value})){
+    while(player.takeItem(${chest[0]}, ${chest[1]}, ${chest[2]})){
         player.execute("scoreboard players add @e[type=ArmorStand,r=1,x=${x},y=${y},z=${z},tag=thTestCounter] thDungeonCounter 1");
         world.activateCommandBlock(x, y, z);
     }
