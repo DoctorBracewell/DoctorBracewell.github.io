@@ -44,7 +44,7 @@ var X = WYNNMOB;
 player.setData("at_test", true);
 
 X.setType("thom-invmob3x3");
-X.spawn(${Math.sign(parseInt(document.querySelector("#x-stand").value)) ? parseInt(document.querySelector("#x-stand").value) + 0.5 : parseInt(document.querySelector("#x-stand").value) - 0.5}, ${document.querySelector("#y-stand").value + 1}, ${Math.sign(parseInt(document.querySelector("#z-stand").value)) ? parseInt(document.querySelector("#z-stand").value) + 0.5 : parseInt(document.querySelector("#z-stand").value) - 0.5});
+X.spawn(${Math.sign(parseInt(document.querySelector("#x-stand").value)) ? parseInt(document.querySelector("#x-stand").value) + 0.5 : parseInt(document.querySelector("#x-stand").value) - 0.5}, ${parseInt(document.querySelector("#y-stand").value) + 1}, ${Math.sign(parseInt(document.querySelector("#z-stand").value)) ? parseInt(document.querySelector("#z-stand").value) + 0.5 : parseInt(document.querySelector("#z-stand").value) - 0.5});
 X.say("&0");
 X.setOnRightClickScript("${document.querySelector("#script-folder").value.slice(-1) === "/" ? document.querySelector("#script-folder").value : `${document.querySelector("#script-folder").value}/`}onRightClick");
 X.setOnlyVisibleToPlayer;
