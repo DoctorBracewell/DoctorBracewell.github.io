@@ -103,7 +103,7 @@ if (player.getData("clickDoor", false)) {
     player.execute("scoreboard players add @e[type=ArmorStand,r=1,x=${x},y=${y},z=${z},tag=thTestCounter] thDungeonCounter 0");
     while(player.takeItem(${chest[0]}, ${chest[1]}, ${chest[2]})){
         player.execute("scoreboard players add @e[type=ArmorStand,r=1,x=${x},y=${y},z=${z},tag=thTestCounter] thDungeonCounter 1");
-        world.activateCommandBlock(x, y, z);
+        world.activateCommandBlock(${parseInt(x) + 1} ${y} ${z});
     }
     player.setData("clickDoor", false);
 }
