@@ -8,13 +8,11 @@ document.querySelector(".cookies-accept").addEventListener("click", () => {
 })
 
 // Storage
-/*if (typeof(Storage) !== "undefined") {
+if (typeof(Storage) !== "undefined") {
     
     window.onbeforeunload = closingCode;
 
     function closingCode(){
-        localStorage.setItem("vertices", control);
-
         for (let element of  document.querySelectorAll(".form-input")) {
             localStorage.setItem(element.name, element.value)
         }   
@@ -24,22 +22,14 @@ document.querySelector(".cookies-accept").addEventListener("click", () => {
     window.onload = openingCode;
 
     function openingCode() {
-        if (localStorage.getItem("vertices") === null) {
-            localStorage.setItem("vertices", 1)
-        }
-
-        for (let i = 0; i < parseInt(localStorage.getItem("vertices")) - 1; i++) {
-            newVertex()
-        }
-
         Object.keys(localStorage).forEach(element => {
-            if (element === "cookies" || element === "vertices") return;
+            if (element === "cookies") return;
             document.querySelector(`*[name="${element}"]`).value = localStorage[element];
         });
         return null;
     }
 
-} else {}*/
+} else {}
 
 // Editors
 const commandsOut = CodeMirror.fromTextArea(document.querySelector("#commandsOut"), {mode: "", theme: "lesser-dark", lineNumbers: true, lineWrapping: true});
@@ -80,6 +70,7 @@ function generateStuff() {
     cmds.push(`/setblock x y z gold_block`)
     cmds.push(`/entitydata @e[type=ArmorStand,r=1,x=${x},y=${y},z=${z}] {CustomNameVisible:1b}`);
     cmds.push(`/clone ${chest[0]} ${parseInt(chest[1]) + 1} ${chest[2]} ${chest[0]} ${parseInt(chest[1]) + 1} ${chest[2]} ${chest[0]} ${chest[1]} ${chest[2]}`);
+    cmds.push("// \\/ Add small delay (1 repeater tick) before this command \\/")
     cmds.push(`/entitydata @e[type=ArmorStand,r=1,x=${x},y=${y},z=${z},tag=thTestCounter] {CustomName:"&a0&2/${itemNum}"}`);
 
     commandsOut.getDoc().setValue(cmds.join("\n\n"));
