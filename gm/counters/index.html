@@ -31,8 +31,6 @@
     </head>
 
     <body>
-        <div class="container-fluid">
-
         <section id="cookies-popup">
             <p>This website uses cookies (little pieces of data) to help me learn more about how many people visit my site, and other boring statistics. By continuing to use this site, you consent to the use of these cookies.</p>
             <div class="accept-wrap">
@@ -40,74 +38,85 @@
             </div>
         </section>
 
-        <div class="container-fluid">
-            <div class="row" id="root-inputs">
-                <div class="col">
-                    <div class="input stand-cords">
-                        <label for="stand">Armor Stand Cords: </label>
-                        <input class="form-input" name="stand" type="text" id="stand" placeholder="X Y Z"/>
+        <div class="viewport-wrap d-flex flex-column container-fluid m-0 p-0 mh-100" style="min-height: 100vh;">
+            <div class="row container-fluid">
+                <h1 class="p-5 col display-2 text-center text-dark">WynnScript CMB Counter Generator</h1>
+            </div>
+
+            <div class="row container-fluid">
+                <div class="col container">
+                    <div class="input-group stand-cords mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Armor Stand Cords:</span>
+                        </div>
+                        <input class="form-control bg-light" type="text" id="stand" placeholder="X Y Z"/>
                     </div>
 
-                    <div class="input chest-cords">
-                        <label for="Chest">Bottom Chest Cords: </label>
-                        <input class="form-input" name="chest" type="text" id="chest" placeholder="X Y Z"/>
+                    <div class="input-group chest-cords mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Bottom Chest Cords:</span>
+                        </div>
+                        <input class="form-control bg-light" type="text" id="chest" placeholder="X Y Z"/>
                     </div>
 
-                    <div class="input">
-                        <label for="item-number">Amount of Item:</label>
-                        <input class="form-input" name="item-number" type="number" id="item-number"/>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Amount of Item:</span>
+                        </div>
+                        <input class="form-control bg-light" type="text" id="item-number" placeholder="1"/>
                     </div>
 
-                    <div class="input">
-                        <label for="script-folder">Script Folder:</label>
-                        <input class="form-input" name="script-folder" type="text" id="script-folder"/>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Script Folder</span>
+                        </div>
+                        <input class="form-control bg-light" type="text" id="script-folder" placeholder="_Dungeons/DecrepitSewers/..."/>
                     </div>
                 </div>
 
-                <div class="col" id="generate-button">
-                    <div class="big-button-wrap">
-                        <a class="big-button" onclick="generateStuff()"><span>Generate Scripts + Commands</span></a>
-                    </div>
+                <div class="col container-fluid d-flex">
+                    <button type="button" class="m-auto p-5 btn btn-primary text big-button" style="font-size: 20px;" id="generateButton" onclick="generateStuff()"><span>Generate CMDS + Script</span></a>
                 </div>
             </div>
 
 
-            <div class="row" id="output">
-                <div class="col">
+            <div class="row container-fluid flex-grow-1 pb-4" id="output">
+                <div class="col container-fluid d-flex flex-column">
+                    <h4 class="mx-auto">Commands</h4>
                     <textarea class="snippet-text" id="commandsOut"></textarea>
                 </div>
-                <div class="col">
+                <div class="col container-fluid d-flex flex-column">
+                    <h4 class="mx-auto">Scripts</h4>
                     <textarea class="snippet-text" id="scriptsOut"></textarea>
                 </div>
-            </section>
-        </div>
+            </div>
 
-    
-        <footer class="footer">
-            <p class="version-name">Release 1.1.0</p>
-            <p>
-                Wynnscript & CMB tools for <a href="https://wynncraft.com/">Wynncraft</a> GameMasters.
-                <br/>
-                <a class="icon" href="https://github.com/DoctorBracewell/DoctorBracewell.github.io/gm">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a class="icon" href="https://drbracewell.co.uk/gm">
-                    <i class="fas fa-home"></i>
-                </a>
-                <br/>
-                Website made by <a href="https://drbracewell.co.uk">DrBracewell</a> | © 2020 - All rights reserved.
-                <br/>
-                <a class="icon" href="https://github.com/DoctorBracewell/">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a class="icon" href="mailto:doctorbracewell@gmail.com">
-                    <i class="fas fa-at"></i>
-                </a>
-                <a class="icon" href="https://drbracewell.co.uk">
-                    <i class="fas fa-home"></i>
-                </a>
-            </p>
-        </footer>
+        
+            <footer class="footer container-fluid p-0 m-0">
+                <p class="version-name">Release 1.2.0</p>
+                <p>
+                    Wynnscript & CMB tools for <a href="https://wynncraft.com/">Wynncraft</a> GameMasters.
+                    <br/>
+                    <a class="icon" href="https://github.com/DoctorBracewell/DoctorBracewell.github.io/gm">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a class="icon" href="https://drbracewell.co.uk/gm">
+                        <i class="fas fa-home"></i>
+                    </a>
+                    <br/>
+                    Website made by <a href="https://drbracewell.co.uk">DrBracewell</a> | © 2020 - All rights reserved.
+                    <br/>
+                    <a class="icon" href="https://github.com/DoctorBracewell/">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a class="icon" href="mailto:doctorbracewell@gmail.com">
+                        <i class="fas fa-at"></i>
+                    </a>
+                    <a class="icon" href="https://drbracewell.co.uk">
+                        <i class="fas fa-home"></i>
+                    </a>
+                </p>
+            </footer>
 
         </div>
 
@@ -116,5 +125,10 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 
         <script src="counters.js" type="text/javascript"></script>
+        <script>
+            $(document).ready(function(){
+              $('[data-toggle="tooltip"]').tooltip();
+            });
+        </script>
     </body>
 </html>
