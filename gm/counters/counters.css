@@ -6,61 +6,18 @@ html, body {
   padding: 0;
   font-family: "Oxygen", "Open Sans", sans-serif;
 }
-/* Root */
-#root-inputs {
-  width: auto;
-  height: auto;
-}
-.root-wrap {
-  height: auto;
-}
-.input {
-  padding: 10px;
-}
 
-/* Button */
-#generate-button {
+.viewport-wrap {
   height: 100%;
-  width: 100%;
-}
-.big-button-wrap {
-  width: 100%;
-  height: 100%;
-  display: flex;
-}
-.big-button {
-  margin: auto;
-  background-color: rgb(39, 199, 39);
-  border-radius: 15px;
-  border: 2px solid green;
-  color: white;
-  height: 50%;
-  width: 60%;
-  text-align: center;
-  display: flex;
-  text-transform: uppercase;
-  font-size: 40px;
-}
-.big-button:hover {
-  cursor: pointer;
-}
-.big-button span {
-  margin: auto;
 }
 
 /* Outs */
-#output {
-  grid-column: 1 / span 2;
-}
-.outputs {
-  display: flex;
-  flex-direction: row;
-}
 .CodeMirror {
   margin: 10px;
-  height: auto;
+  height: 100%;
   width: 100%;
 }
+
 /* cookies */
 #cookies-popup {
   z-index: 100000;
@@ -109,7 +66,7 @@ html, body {
 
 /* footer */
 .footer {
-  flex-shrink: 1;
+  position: relative;
   font-family: "Arial", sans-serif;
   font-size: 11px;
   text-align: center;
