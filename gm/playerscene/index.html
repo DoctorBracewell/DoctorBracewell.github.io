@@ -9,18 +9,23 @@
             gtag('config', 'UA-131237362-1');
         </script>
 
+
         <title>Wynnscript Cutscene Generator</title>
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="A generator for wynncraft player cutscenes.">
+        <link rel="shortcut icon" href="./../../icons/index.ico" type="image/x-icon" />
         <meta name="keywords" content="">
 
         <link rel="shortcut icon" href="https://drbracewell.co.uk/icons/wynn.ico" type="image/x-icon" />
         <link href="https://fonts.googleapis.com/css2?family=Oxygen&display=swap" rel="stylesheet">
+        <link href="./../../css/all.css" rel="stylesheet">
         <link href="playerscene.css" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
         <script src="https://kit.fontawesome.com/bf5ba8cfde.js" crossorigin="anonymous"></script>
 
-        
         <script src="./../CodeMirror/codemirror.js" type="text/javascript"></script>
         <link rel="stylesheet" href="./../CodeMirror/codemirror.css">
         <link rel="stylesheet" href="./../CodeMirror/lesser-dark.css">
@@ -35,127 +40,142 @@
             </div>
         </section>
 
-        <div class="main-wrap">
-            <section id="root-inputs">
-                <div class="root-wrap">
-                    <p class="info-box">
-                        This generator is currently in <em>very early alpha</em>. A lot of stuff has a ton of bugs, works incorrectly, or just doesn't work at all. For now I'd recommend not using the individual delete buttons on the vertices, because who even knows how the spaghetti code there works. Other stuff should be mainly stable, but there's an equal chance it all breaks with one click. If you find any bugs please report them to me on discord (DrBracewell#0252) and I'll get them sorted out as soon as I can :).
-                        <br />
-                        Also it looks terrible but  ¯\_(ツ)_/¯
-                    </p>
+        <div class="viewport-wrap d-flex flex-column container-fluid m-0 p-0 mh-100" style="min-height: 100vh;">
+            <div class="container-fluid row m-auto p-5">
+                <h1 class="display-1">WynnScript Cutscene Generator</h1>
+                <p class="p-3">
+                    This generator is currently in <em>very early alpha</em>. A lot of stuff has a ton of bugs, works incorrectly, or just doesn't work at all. For now I'd recommend not using the individual delete buttons on the vertices, because who even knows how the spaghetti code there works. Other stuff should be mainly stable, but there's pretty much an equal chance it all breaks with one click. If you find any bugs please report them to me on discord (DrBracewell#0252) and I'll get them sorted out as soon as I can :).
+                </p>
+            </div>
 
-                    <div class="input">
-                        <label for="gamemode">Gamemode:</label>
-                        <input class="form-input" name="gamemode" type="number" min="0" max="3" value="3" id="gamemode"/>
+            <div class="container-fluid row m-auto p-3">
+                <div class="col">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Gamemode:</span>
+                        </div>
+                        <input class="form-control bg-light" type="number" min="0" max="3" value="3" id="gamemode"/>
                     </div>
 
-                    <div class="input">
-                        <label for="invisible">Invisible:</label>
-                        <div class="boolean">
-                            <input type="checkbox" name="invisible" class="checkbox form-input" id="invisible" checked />
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Invisible:</span>
+                        </div>
+                        <div class="position-relative form-control d-flex flex-row p-0 m-0">
+                            <input class="form-control bg-light boolean-child boolean-false" name="invisible" type="radio" id="invisibleFalse">
+                            <input class="form-control bg-light boolean-child boolean-true" name="invisible" type="radio" id="invisibleTrue">
+
+                            <div class="boolean-display position-absolute d-flex flex-row w-100 p-0 m-0 h-100">
+                                <div class="false boolean-view flex-grow-1 d-flex bg-light"><span class="m-auto">False</span></div>
+                                <div class="true boolean-view flex-grow-1 d-flex bg-light"><span class="m-auto">True</span></div>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="input snippet">
-                        <label for="startSnippet">Start Snippet:</label>
-                        <textarea name="startSnippet" class="snippet-text form-input" id="startSnippet" placeholder="This will be put before the start of the cutscene. It is not validated by the generator, so make sure you have proper syntax!"></textarea>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Start Snippet:</span>
+                        </div>
+                        <textarea class="form-control bg-light snippet-text" id="startSnippet" placeholder="This will be put before the start of the cutscene. It is not validated by the generator, so make sure you have proper syntax!"></textarea>
                     </div>
-                    <hr />
-                    <div class="input snippet">
-                        <label for="startSnippet">End Snippet:</label>
-                        <textarea name="endSnippet" class="snippet-text form-input" id="endSnippet" placeholder="This will be put at the end of the cutscene, after the player has been made visible and returned to gamemode 2. To execute code before this happens, place the code in the snippet for the final vertex."></textarea>
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">End Snippet:</span>
+                        </div>
+                        <textarea class="form-control bg-light snippet-text" id="endSnippet" placeholder="This will be put at the end of the cutscene, after the player has been made visible and returned to gamemode 2. To execute code before this happens, place the code in the snippet for the final vertex."></textarea>
                     </div>
                 </div>
-            </section>
 
-            <section id="generate-button">
-                <div class="big-button-wrap">
-                    <a class="big-button" onclick="generateCode()"><span>Generate Script</span></a>
+                <div class="col container-fluid d-flex flex-column">
+                    <div class="d-flex mx-auto mb-3 container-fluid">
+                        <button class="new-button btn btn-primary w-75 py-3 m-auto" onclick="newVertex()">
+                            <h2><i class="fas fa-plus plus-icon"></i></h2>
+                            <h2>NEW VERTEX</h2>
+                        </button>
+                    </div>
+
+                    <div class="d-flex mx-auto mb-3">
+                        <button class="btn btn-danger" onclick="deleteAll()">
+                            <i class="fas fa-times"></i>
+                            <br />
+                            DELETE ALL
+                        </button>
+                    </div>
                 </div>
-            </section>
+            </div>
 
-            <section id="path-maker">
-                <div class="new-path">
-                    <a class="new-button" onclick="newVertex()">
-                        <i class="fas fa-plus plus-icon"></i>
-                        <br />
-                        NEW VERTEX
+            <div class="container-fluid row m-auto p-3">
+                <div class="col container-fluid d-flex">
+                    <button class="btn btn-success p-5 m-auto" onclick="generateCode()"><h1>Generate Script</h1></a>
+                </div>
+
+                <div class="col container-fluid">
+                    <div class="path-vertices container-fluid">
+                        
+                        <div class="container-fluid border border-1 p-3 m-3 vertex-box-1" id="vertex-0">
+                            <h4>Vertex 0 (start)</h4>
+
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Cords:</span>
+                                </div>
+                                <input class="form-control bg-light" type="text" id="cords0" placeholder="X Y Z"/>
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Yaw & Pitch:</span>
+                                </div>
+                                <input class="form-control bg-light" type="text" id="yawpitch0" placeholder="YAW PITCH"/>
+                            </div>
+                        </div>
+    
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-fluid row d-flex flex-column p-3 flex-grow-1 m-auto">
+                <div class="col container-fluid d-flex flex-column">
+                    <p>You can click in the code then use <kbd>CTRL + A</kbd> -> <kbd>CTRL + C</kbd> to copy it.</p>
+                    <textarea id="scriptOutput"></textarea>
+                </div>
+            </div>
+    
+            <footer class="footer container-fluid p-0 m-0">
+                <p class="version-name">Alpha 0.2.0</p>
+                <p>
+                    Wynnscript & CMB tools for <a href="https://wynncraft.com/">Wynncraft</a> GameMasters.
+                    <br/>
+                    <a class="icon" href="https://github.com/DoctorBracewell/DoctorBracewell.github.io/gm">
+                        <i class="fab fa-github"></i>
                     </a>
-                </div>
-                <div class="delete-all">
-                    <a class="delete-all-button" onclick="deleteAll()">
-                        <i class="fas fa-times"></i>
-                        <br />
-                        DELETE ALL
+                    <a class="icon" href="https://drbracewell.co.uk/gm">
+                        <i class="fas fa-home"></i>
                     </a>
-                </div>
-                <div class="path-vertices">
-                    <div class="vertex-wrap vertex-box-1" id="vertex-0">
+                    <br/>
+                    Website made by <a href="https://drbracewell.co.uk">DrBracewell</a> | © 2020 - All rights reserved.
+                    <br/>
+                    <a class="icon" href="https://github.com/DoctorBracewell/">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a class="icon" href="mailto:doctorbracewell@gmail.com">
+                        <i class="fas fa-at"></i>
+                    </a>
+                    <a class="icon" href="https://drbracewell.co.uk">
+                        <i class="fas fa-home"></i>
+                    </a>
+                </p>
+            </footer>
 
-                        <div class="vertex-title">
-                            <p>Vertex 0 (start)</p>
-                        </div>
-
-                        <div class="cords">
-                            <label>X: 
-                                <input name="x0" class="x form-input" type="number" />
-                            </label>
-                            <label>Y: 
-                                <input name="y0" class="y form-input" type="number" />
-                            </label>
-                            <label>Z: 
-                                <input name="z0" class="z form-input" type="number" />
-                            </label>
-                        </div>
-
-                        <div class="yaw-pitch">
-                            <label>Yaw (side-to-side): 
-                                <input name="yaw0" class="yaw form-input" type="number" />
-                            </label>
-                            <label>Pitch (up-and-down): 
-                                <input name="pitch0" class="pitch form-input" type="number" />
-                            </label>
-                        </div>
-                    </div>
-
-                </div>
-            </section>
-
-            <section id="output">
-                <p class="info-box">You can click in the code then use CTRL + A -> CTRL + C to copy the whole thing</p>
-                <div>
-                    <textarea class="snippet-text" id="scriptOutput"></textarea>
-                </div>
-            </section>
         </div>
 
-    
-        <footer class="footer">
-            <p class="version-name">alpha | 0.1.1</p>
-            <p>
-                Wynnscript tools for <a href="https://wynncraft.com/">Wynncraft</a> GameMasters.
-                <br/>
-                <a class="icon" href="https://github.com/DoctorBracewell/DoctorBracewell.github.io/gm">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a class="icon" href="https://drbracewell.co.uk/gm">
-                    <i class="fas fa-home"></i>
-                </a>
-                <br/>
-                Website made by <a href="https://drbracewell.co.uk">DrBracewell</a> | © 2020 - All rights reserved.
-                <br/>
-                <a class="icon" href="https://github.com/DoctorBracewell/">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a class="icon" href="mailto:doctorbracewell@gmail.com">
-                    <i class="fas fa-at"></i>
-                </a>
-                <a class="icon" href="https://drbracewell.co.uk">
-                    <i class="fas fa-home"></i>
-                </a>
-            </p>
-        </footer>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 
+        <script src="./../../js/cookies.js" type="text/javascript"></script>
         <script src="playerscene.js" type="text/javascript"></script>
     </body>
 </html>

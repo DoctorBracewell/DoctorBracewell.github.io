@@ -4,243 +4,38 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
-  display: flex;
-  flex-direction: column;
   font-family: "Oxygen", "Open Sans", sans-serif;
 }
-.main-wrap {
-  flex: 1 0 auto;
-  padding: 20px;
-  display: grid;
-  grid-template-columns: 50% 50%;
-  grid-template-rows: auto auto auto;
-}
 
-/* Main */
-.boolean {
-  display: inline-block;
-}
-
-.snippet {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
+.viewport-wrap {
   height: 100%;
+}
+
+.boolean-child {
+  z-index: 10000;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.boolean-view {
+  transition: .2s all;
+}
+.boolean-true:checked ~ .boolean-display .true {
+ background-color: #0275d8 !important;
+ color: white !important;
+}
+.boolean-false:checked ~ .boolean-display .false {
+  background-color: #0275d8 !important;
+  color: white !important;
 }
 
 .snippet-text {
-  margin: auto;
-  height: 5em;
-  width: 80%;
-  max-width: 80%;
-  min-width: 80%;
-}
-
-.info-box {
-  padding: 10px;
-}
-
-/* Root */
-#root-inputs {
-  width: auto;
-  height: auto;
-}
-.root-wrap {
-  height: auto;
-}
-
-/* Button */
-#generate-button {
-  height: 100%;
-  width: 100%;
-}
-.big-button-wrap {
-  width: 100%;
-  height: 100%;
-  display: flex;
-}
-.big-button {
-  margin: auto;
-  background-color: rgb(39, 199, 39);
-  border-radius: 15px;
-  border: 2px solid green;
-  color: white;
-  height: 50%;
-  width: 60%;
-  text-align: center;
-  display: flex;
-  text-transform: uppercase;
-  font-size: 40px;
-}
-.big-button:hover {
-  cursor: pointer;
-}
-.big-button span {
-  margin: auto;
-}
-/* Maker */
-#path-maker {
-  grid-column: 2;
-  grid-row: 1 / span 2;
-}
-.new-path {
-  display: flex;
-}
-.new-button {
-  background-color: purple;
-  padding: 20px 50px;
-  font-size: 40px;
-  color: white;
-  width: 100%;
-  text-align: center;
-}
-.new-button:hover {
-  cursor: pointer;
-}
-.delete-all {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-}
-.delete-all-button * {
-  color: rgb(153, 10, 10);
-  margin: auto;
-}
-.delete-all-button i {
-  font-size: 100px;
-  transition: .2s;
-}
-.delete-all-button i:hover {
-  cursor: pointer;
-  font-size: 110px;
-}
-
-.path-vertices {
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-}
-.vertex-wrap {
-  display: flex;
-  flex-direction: column;
-  border: 1px solid black;
-  padding: 20px 50px;
-  margin: auto;
-}
-.vertex-wrap > * {
-  margin: 10px auto;
-}
-.cords {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-}
-.delete {
-  position: absolute;
-  margin: -15px -40px;
+  min-height: auto;
 }
 .delete-button {
-  color: rgb(185, 33, 33);
-  font-size: 30px;
-  transition: .2s;
+  transition: .3s all;
+  font-size: 1.7em;
 }
 .delete-button:hover {
   cursor: pointer;
-  font-size: 35px;
-}
-/* Output */
-#output {
-  grid-column: 1 / span 2;
-}
-.script-output {
-  width: 100%;
-  height: 100%;
-}
-
-
-
-
-/* cookies */
-#cookies-popup {
-  z-index: 100000;
-  max-width: 20vw;
-  background-color: rgb(184, 81, 83);
-  opacity: .8;
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  display: none;
-  flex-direction: column;
-  transition: .2s all;
-}
-#cookies-popup:hover {
-  opacity: 1
-}
-#cookies-popup p {
-  text-align: center;
-  margin: auto;
-  padding: 10px;
-  font-family: "Montserrat", "Open Sans", sans-serif;
-  color: rgb(224, 224, 224);
-  cursor: default;
-}
-.accept-wrap {
-  display: flex;
-  margin: 0 0 10px 0;
-}
-.cookies-accept {
-  font-family: "Montserrat", "Open Sans", sans-serif;
-  color: rgb(31, 31, 31);
-  background-color: rgb(224, 224, 224);
-  font-size: 1.4em;
-  margin: auto;
-  width: 50%;
-  padding: 10px 0;
-  text-transform: uppercase;
-  text-align: center;
-  font-weight: 600;
-  transition: .2s all;
-}
-.cookies-accept:hover {
-  cursor: pointer;
-  transform: scale(1.05)
-}
-
-/* footer */
-.footer {
-  flex-shrink: 0;
-  font-family: "Arial", sans-serif;
-  font-size: 11px;
-  text-align: center;
-  line-height: 18px;
-  margin: 0;
-  background-color: #1B1B1B;
-  color: rgb(99, 99, 99);
-  position: relative;
-}
-.footer a {
-  color: #979797;
-  text-decoration: none;
-}
-.footer a:hover {
-  color: #dddddd;
-  text-decoration: underline;
-  transition: all 0.3s ease;
-}
-a.icon:hover {
-  text-decoration: none;
-}
-.footer a:visted {
-  color: #979797;
-}
-
-.icon * {
-  font-size: 22px;
-  padding: 5px 20px;
-}
-
-.version-name {
-  position: absolute;
-  bottom: 1%;
-  left: 1%;
 }

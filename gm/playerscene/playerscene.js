@@ -18,45 +18,39 @@ function newVertex() {
     wrapper.setAttribute("class", "vertex-wrap vertex-box");
     wrapper.setAttribute("id", `vertex-${control}`)
     wrapper.innerHTML = `
-<div class="delete">
-    <a class="delete-button" id="delete-${control}" onclick="deleteVertex(${control})"><i class="fas fa-times"></i></a>
-</div>
+<div class="container-fluid border border-1 p-3 m-3 vertex-box" id="vertex-${control}">
+    <div class="container-fluid p-0 mb-3 d-flex flex-row justify-content-between">
+        <h4 class="d-inline m-0">Vertex ${control}</h4>
+        <button class="btn btn-danger delete-button" id="delete${control}" onclick="deleteVertex(${control})"><i class="fas fa-times"></i></button>                   
+    </div>
 
-<div class="vertex-title">
-    <p>Vertex ${control}</p>
-</div>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text">Cords:</span>
+        </div>
+        <input class="form-control bg-light cords" type="text" id="cords${control}" placeholder="X Y Z"/>
+    </div>
 
-<div class="cords">
-    <label>X: 
-        <input name="x${control}" class="x form-input" type="number" />
-    </label>
-    <label>Y: 
-        <input name="y${control}" class="y form-input" type="number" />
-    </label>
-    <label>Z: 
-        <input name="z${control}" class="z form-input" type="number" />
-    </label>
-</div>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text">Yaw & Pitch:</span>
+        </div>
+        <input class="form-control bg-light yawpitch" type="text" id="yawpitch${control}" placeholder="YAW PITCH"/>
+    </div>
 
-<div class="yaw-pitch">
-    <label>Yaw (side-to-side): 
-        <input name="yaw${control}" class="yaw form-input" type="number" />
-    </label>
-    <label>Pitch (up-and-down): 
-        <input name="pitch${control}" class="pitch form-input" type="number" />
-    </label>
-</div>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text">Time Taken (seconds):</span>
+        </div>
+        <input class="form-control bg-light time" type="text" id="time${control}" placeholder="Time between previous vertex and this one."/>
+    </div>
 
-<div class="time-control">
-    <label>Total Time (seconds):
-        <input name="time${control}" class="total-time form-input" type="number" />
-    </label>
-</div>
-
-<div class="vertex-snippet-wrap">
-    <label>Script snippet (executed when the player reaches the vertex):
-        <textarea name="snippet${control}" class="vertex-snippet form-input"></textarea>
-    </label>
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text">Script Snippet:</span>
+        </div>
+        <textarea class="form-control bg-light snippet" type="text" id="snippet${control}" placeholder="Executed when the player reaches the vertex."></textarea>
+    </div>
 </div>`
 
     document.querySelector(".path-vertices").appendChild(wrapper)
@@ -71,8 +65,12 @@ if (typeof(Storage) !== "undefined") {
     function closingCode(){
         localStorage.setItem("PS-vertices", control);
 
-        for (let element of document.querySelectorAll(".form-input")) {
-            localStorage.setItem(`PS-${element.name}`, element.value)
+        for (let element of document.querySelectorAll("input.form-control, textarea.form-control")) {
+            if (element.id === "invisibleFalse") continue;
+            if (element.id === "invisibleTrue") {
+                localStorage.setItem("PS-invisible", element.checked)
+            }
+            localStorage.setItem(`PS-${element.id}`, element.value)
         }   
         return null;
     }
@@ -92,8 +90,18 @@ if (typeof(Storage) !== "undefined") {
 
         Object.keys(localStorage).forEach(element => {
             if (element === "PS-vertices") return;
+            if (element === "PS-invisible") {
+                if (localStorage.getItem(element) === "true") {
+                    document.querySelector("#invisibleTrue").checked = true;
+                    document.querySelector("#invisibleFalse").checked = false;
+                } else {
+                    document.querySelector("#invisibleFalse").checked = true;
+                    document.querySelector("#invisibleTrue").checked = false;
+                }
+                return;
+            }
             if (element.includes("PS-")) {
-                document.querySelector(`*[name="${element.replace("PS-", "")}"]`).value = localStorage[element];
+                document.querySelector(`#${element.replace("PS-", "")}`).value = localStorage.getItem(element)
             }
         });
         return null;
@@ -124,7 +132,7 @@ function deleteAll() {
 }
 
 function deleteVertex(number) {
-    let vertex = document.querySelector(`#vertex-${number}`)
+    let vertex = document.querySelector(`#vertex${number}`)
     vertex.parentNode.removeChild(vertex);
     control--;
 }
@@ -148,7 +156,7 @@ class Vertex {
 function envelopeFunctions(code) {
     let starters = [
         `player.setGamemode(${document.querySelector("#gamemode").value});\n`, 
-        (document.querySelector("#invisible").checked ? "player.setInvisible(true);\n" : ""), 
+        (document.querySelector("#invisibleTrue").checked ? "player.setInvisible(true);\n" : ""), 
         (document.querySelector("#startSnippet").value ? `${document.querySelector("#startSnippet").value}\n` : "\n")
     ];
 
@@ -164,25 +172,25 @@ function envelopeFunctions(code) {
 function loopVertices() {
     let vertexArray = [], first = document.querySelector(".vertex-box-1");
     vertexArray.push(new Vertex({
-        x: first.querySelector(".x").value,
-        y: first.querySelector(".y").value,
-        z: first.querySelector(".z").value,
+        x: first.querySelector("#cords0").value.split(" ")[0],
+        y: first.querySelector("#cords0").value.split(" ")[1],
+        z: first.querySelector("#cords0").value.split(" ")[2]
     }, {
-        yaw: first.querySelector(".yaw").value,
-        pitch: first.querySelector(".pitch").value
+        yaw: first.querySelector("#yawpitch0").value.split(" ")[0],
+        pitch: first.querySelector("#yawpitch0").value.split(" ")[1]
     }));
 
     document.querySelectorAll(".vertex-box").forEach(i => {
         vertexArray.push(new Vertex({
-            x: i.querySelector(".x").value,
-            y: i.querySelector(".y").value,
-            z: i.querySelector(".z").value,
+            x: i.querySelector(".cords").value.split(" ")[0],
+            y: i.querySelector(".cords").value.split(" ")[1],
+            z: i.querySelector(".cords").value.split(" ")[2]
         }, {
-            yaw: i.querySelector(".yaw").value,
-            pitch: i.querySelector(".pitch").value
+            yaw: i.querySelector(".yawpitch").value.split(" ")[0],
+            pitch: i.querySelector(".yawpitch").value.split(" ")[1],
         },
-            i.querySelector(".total-time").value,
-            i.querySelector(".vertex-snippet").value
+            i.querySelector(".time").value,
+            i.querySelector(".snippet").value
         ));
     });
 
