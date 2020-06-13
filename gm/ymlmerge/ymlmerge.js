@@ -29,7 +29,6 @@ function merge() {
         "      display-name:"
     ]
      
-     
     const animationEnum = {moving: 0, attacking: 1, idle1: 2, idle2: 3, idle3: 4, armorStand: 5, snow: 6, displayName: 7}
     Object.freeze(animationEnum);
      

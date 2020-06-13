@@ -12,6 +12,7 @@ html, body {
 }
 
 .CodeMirror {
+  max-height: 50vh;
   height: auto;
   width: 100%;
 }
