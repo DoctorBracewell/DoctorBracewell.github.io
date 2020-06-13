@@ -111,7 +111,7 @@ function merge() {
         offset++;
     };
  
-    document.querySelector("#errors").style.display = "none";
+    document.querySelector("#errors").setAttribute("style", "display: none !important");
     document.querySelector("#errors div").innerHTML = "";
     output.setValue(mergedAnimation.join("\n"));
 }
