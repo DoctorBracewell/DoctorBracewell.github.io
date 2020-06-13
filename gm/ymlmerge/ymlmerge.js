@@ -16,42 +16,59 @@ document.querySelector("#mergeButton").addEventListener("click", () => {
     } 
 })
 
-let search = [
-    "  movingAnimation:",
-    "  attackingAnimation:",
-    "  idle1Animation:",
-    "  idle2Animation:",
-    "  idle3Animation:",
-    "ArmourStand",
-    "    type: SNOW",
-    "      display-name:"
-]
- 
- 
-const animationEnum = {moving: 0, attacking: 1, idle1: 2, idle2: 3, idle3: 4, armorStand: 5, snow: 6, displayName: 7}
-Object.freeze(animationEnum);
- 
-let animations = [[]];
-let baseAnimation;
-let mergedAnimation = [];
-let activeAnimations = [false, false, false, false, false];
- 
-let asCount = 0;
-let offset = 0;
-let foundSnow = true;
-let currentDisplayName = "";
-let copyFromDiffrentAnimation = false;
- 
+
 function merge() {
-    if (!load_files()) {
+    let search = [
+        "  movingAnimation:",
+        "  attackingAnimation:",
+        "  idle1Animation:",
+        "  idle2Animation:",
+        "  idle3Animation:",
+        "ArmourStand",
+        "    type: SNOW",
+        "      display-name:"
+    ]
+     
+     
+    const animationEnum = {moving: 0, attacking: 1, idle1: 2, idle2: 3, idle3: 4, armorStand: 5, snow: 6, displayName: 7}
+    Object.freeze(animationEnum);
+     
+    let animations = [[]];
+    let baseAnimation;
+    let mergedAnimation = [];
+    let activeAnimations = [false, false, false, false, false];
+     
+    let asCount = 0;
+    let offset = 0;
+    let foundSnow = true;
+    let currentDisplayName = "";
+    let copyFromDiffrentAnimation = false;
+     
+
+
+    for (let i = 0; i < 5; i++) {
+        let a = editors[i].getDoc().getValue();
+        if (a != "") {
+            activeAnimations[i] = true;
+            animations[i] = String(a).split("\n");
+        }
+      }
+ 
+    if (activeAnimations[animationEnum.idle1]) {
+        baseAnimation = animationEnum.idle1;
+    } else if (activeAnimations[animationEnum.moving]) {
+        baseAnimation = animationEnum.moving;
+    } else if (activeAnimations[animationEnum.attacking]) {
+        baseAnimation = animationEnum.attacking;
+    } else if (activeAnimations[animationEnum.idle2]) {
+        baseAnimation = animationEnum.idle2;
+    } else if (activeAnimations[animationEnum.idle3]) {
+        baseAnimation = animationEnum.idle3;
+    }
+   
+    if (animations.length < 2) {
         throw new Error("Not enough animations found to continue. Make sure that there are at least two.")
     }
-    mergedAnimation = [];
-    activeAnimations = [false, false, false, false, false];
-    asCount = 0;
-    offset = 0;
-    foundSnow = true;
-    currentDisplayName = "";
 
     for (let s of animations[baseAnimation]) {
         if (String(s).startsWith(search[animationEnum.armorStand])) {
@@ -100,33 +117,3 @@ function merge() {
     output.setValue(mergedAnimation.join("\n"));
 }
  
- 
-function load_files() {
-    animations = [[]];
-    
-    for (let i = 0; i < 5; i++) {
-        let a = editors[i].getDoc().getValue();
-        if (a != "") {
-            activeAnimations[i] = true;
-            animations[i] = String(a).split("\n");
-        }
-      }
- 
-    if (activeAnimations[animationEnum.idle1]) {
-        baseAnimation = animationEnum.idle1;
-    } else if (activeAnimations[animationEnum.moving]) {
-        baseAnimation = animationEnum.moving;
-    } else if (activeAnimations[animationEnum.attacking]) {
-        baseAnimation = animationEnum.attacking;
-    } else if (activeAnimations[animationEnum.idle2]) {
-        baseAnimation = animationEnum.idle2;
-    } else if (activeAnimations[animationEnum.idle3]) {
-        baseAnimation = animationEnum.idle3;
-    }
-   
-    if (animations.length < 2) {
-        return false;
-    } else {
-        return true;
-    }
-}
