@@ -15,7 +15,7 @@ const outputEditor = CodeMirror.fromTextArea(document.querySelector("#scriptOutp
 let control = 1;
 function newVertex() {
     let wrapper = document.createElement("div");
-    wrapper.setAttribute("class", "vertex-wrap vertex-box");
+    wrapper.setAttribute("class", "vertex-wrap");
     wrapper.setAttribute("id", `vertex-${control}`)
     wrapper.innerHTML = `
 <div class="container-fluid border border-1 p-3 m-3 vertex-box" id="vertex-${control}">
@@ -241,8 +241,10 @@ function generatePath(vertexA, vertexB) {
 function generateCode() {
     let vertices = loopVertices();
     let code = []
+
     for (let i = 0; i < vertices.length - 1; i++) {
         code.push(generatePath(vertices[i], vertices[i + 1]))
     }
+
     outputEditor.getDoc().setValue(envelopeFunctions(code.join("\n")));
 }

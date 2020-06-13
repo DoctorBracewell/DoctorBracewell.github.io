@@ -24,3 +24,10 @@
 ## alpha | 0.1.1
 * Revamped localStorage with page prefixes
 * Changed to parseFloats for decimal co-ordinates.
+
+## alpha | 0.2.0
+* Completley revamped styles
+* Added local storage prefixes
+
+## alpha | 0.2.1
+* Fixed major bug where player would be stuck at end of vertex for same amount of time as taken before continuing.
