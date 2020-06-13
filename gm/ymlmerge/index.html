@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-131237362-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'UA-131237362-1');
+        </script>
+
+        <title>Armor Stand YAML Merger</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="A meger for wynncraft pet/mob yamls.">
+        <meta name="keywords" content="">
+
+        <link rel="shortcut icon" href="https://drbracewell.co.uk/icons/wynn.ico" type="image/x-icon" />
+        <link href="https://fonts.googleapis.com/css2?family=Oxygen&display=swap" rel="stylesheet">
+        <link href="./../../css/all.css" rel="stylesheet">
+        <link href="ymlmerge.css" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+        <script src="https://kit.fontawesome.com/bf5ba8cfde.js" crossorigin="anonymous"></script>
+
+        <script src="./../CodeMirror/codemirror.js" type="text/javascript"></script>
+        <link rel="stylesheet" href="./../CodeMirror/codemirror.css">
+        <link rel="stylesheet" href="./../CodeMirror/lesser-dark.css">
+        <script src="./../CodeMirror/yaml.js" type="text/javascript"></script>
+	</head>
+	
+	<body>
+        <section id="cookies-popup">
+            <p>This website uses cookies (little pieces of data) to help me learn more about how many people visit my site, and other boring statistics. By continuing to use this site, you consent to the use of these cookies.</p>
+            <div class="accept-wrap">
+                <a class="cookies-accept">ACCEPT</a>
+            </div>
+        </section>
+
+        <div class="viewport-wrap d-flex flex-column container-fluid m-0 p-0 mh-100" style="min-height: 100vh;">
+            <div class="container-fluid row m-auto p-5">
+                <h1 class="display-1">Armor Stand YAML Merger</h1>
+                <div>
+                    Aucorg is not very good at JavaScript, and it is entirely possible that this merger could break very badly. Have fun!
+                </div>  
+            </div>
+
+            <div class="row container-fluid d-flex flex-row flex-grow-1 p-3 m-0">
+                <div class="col container-fluid mx-auto d-flex flex-column">
+                    <h4 class="mx-auto">Moving</h4>
+                    <textarea id="moving" class="mx-auto"></textarea>
+                </div>
+                <div class="col container-fluid mx-auto d-flex flex-column">
+                    <h4 class="mx-auto">Attacking</h4>
+                    <textarea id="attacking" class="mx-auto"></textarea>
+                </div>
+            </div>
+
+            <div class="row container-fluid d-flex flex-row flex-grow-1 p-3 m-0">
+                <div class="col container-fluid mx-auto d-flex flex-column">
+                    <h4 class="mx-auto">Idle 1</h4>
+                    <textarea id="idle1" class="mx-auto"></textarea>
+                </div>
+                <div class="col container-fluid mx-auto d-flex flex-column">
+                    <h4 class="mx-auto">Idle 2</h4>
+                    <textarea id="idle2" class="mx-auto"></textarea>
+                </div>
+                <div class="col container-fluid mx-auto d-flex flex-column">
+                    <h4 class="mx-auto">Idle 3</h4>
+                    <textarea id="idle3" class="mx-auto"></textarea>
+                </div>
+            </div>
+
+            <div class="container-fluid row d-flex flex-column p-3 flex-grow-1 m-auto">
+                <div class="col container-fluid mx-auto d-flex h-100 pb-3">
+                    <button class="btn btn-success m-auto btn-large p-4" style="font-size:30px;" id="mergeButton">Merge</button>
+                </div>
+
+                <div class="col container-fluid mx-auto d-flex h-100 pb-3" id="errors" style="display: none !important;">
+                    <div class="alert alert-danger m-auto btn-large"></div>
+                </div>
+
+                <div class="col container-fluid d-flex flex-column pb-3 m-0">
+                    <h4 class="mx-auto">Output</h4>
+                    <p class="mx-auto">You can click in the code then use <kbd>CTRL + A</kbd> -> <kbd>CTRL + C</kbd> to copy it.</p>
+                    <textarea id="output"></textarea>
+                </div>
+            </div>
+
+            <footer class="footer container-fluid p-0 m-0">
+                <p class="version-name">Release 1.0.0</p>
+                <p>
+                    Wynnscript & CMB tools for <a href="https://wynncraft.com/">Wynncraft</a> GameMasters.
+                    <br/>
+                    <a class="icon" href="https://github.com/DoctorBracewell/DoctorBracewell.github.io/gm">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a class="icon" href="https://drbracewell.co.uk/gm">
+                        <i class="fas fa-home"></i>
+                    </a>
+                    <br/>
+                    Website made by <a href="https://drbracewell.co.uk">DrBracewell</a> and <a href="https://forums.wynncraft.com/members/aucorg.84408/">Aucorg</a> | © 2020 - All rights reserved.
+                    <br/>
+                    <a class="icon" href="https://github.com/DoctorBracewell/">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a class="icon" href="mailto:doctorbracewell@gmail.com">
+                        <i class="fas fa-at"></i>
+                    </a>
+                    <a class="icon" href="https://drbracewell.co.uk">
+                        <i class="fas fa-home"></i>
+                    </a>
+                </p>
+            </footer>
+
+        </div>
+
+        <script src="./../../js/cookies.js" type="text/javascript"></script>
+        <script src="ymlmerge.js" type="text/javascript"></script>
+	</body>
+</html>
+
+
+
+
+<!--<!DOCTYPE html>
+<html>
+<body>
+    <p id="test">Moving</p>
+    <textarea id="moving"></textarea>
+   
+    <p>Attacking</p>
+    <textarea id="attacking"></textarea>
+   
+    <p>Idle 1</p>
+    <textarea id="idle1"></textarea>
+   
+    <p>Idle 2</p>
+    <textarea id="idle2"></textarea>
+   
+    <p>Idle 3</p>
+    <textarea id="idle3"></textarea>
+   
+    <br>
+   
+    <button id="button">
+    merge
+    </button>
+   
+    <p>Output</p>
+    <textarea id="output"></textarea>
+ 
+    <script src="ymlmerge.js"></script>
+</body>
+</html>-->
