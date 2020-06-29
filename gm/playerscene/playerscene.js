@@ -40,6 +40,21 @@ function newVertex() {
 
     <div class="input-group mb-3">
         <div class="input-group-prepend">
+            <span class="input-group-text">Camera Pan Direction:</span>
+        </div>
+        <div class="position-relative form-control d-flex flex-row p-0 m-0">
+            <input class="form-control bg-light boolean-child boolean-false direction clockwise" name="direction${control}" type="radio" id="clockwise${control}" checked>
+            <input class="form-control bg-light boolean-child boolean-true direction" name="direction${control}" type="radio" id="anticlockwise${control}">
+
+            <div class="boolean-display position-absolute d-flex flex-row w-100 p-0 m-0 h-100">
+                <div class="false boolean-view flex-grow-1 d-flex bg-light"><span class="m-auto">Clockwise</span></div>
+                <div class="true boolean-view flex-grow-1 d-flex bg-light"><span class="m-auto">Anti-Clockwise</span></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
             <span class="input-group-text">Time Taken (seconds):</span>
         </div>
         <input class="form-control bg-light time" type="text" id="time${control}" placeholder="Time between previous vertex and this one."/>
@@ -139,7 +154,7 @@ function deleteVertex(number) {
 
 // \/ Generate script \/
 class Vertex {
-    constructor({x, y, z}, {yaw, pitch}, time, code) {
+    constructor({x, y, z}, {yaw, pitch, direction}, time, code) {
         this.cords = {};
         this.cords.x = x;
         this.cords.y = y;
@@ -148,6 +163,7 @@ class Vertex {
         this.view = {};
         this.view.yaw = yaw;
         this.view.pitch = pitch;
+        this.view.direction = direction;
 
         this.time = time;
         this.code = code;
@@ -188,6 +204,7 @@ function loopVertices() {
         }, {
             yaw: i.querySelector(".yawpitch").value.split(" ")[0],
             pitch: i.querySelector(".yawpitch").value.split(" ")[1],
+            direction: i.querySelector(".clockwise").checked ? "clockwise" : "anticlockwise",
         },
             i.querySelector(".time").value,
             i.querySelector(".snippet").value
@@ -210,10 +227,16 @@ function generatePath(vertexA, vertexB) {
         x: 0 - (parseFloat(vertexA.cords.x) - parseFloat(vertexB.cords.x)),
         y: 0 - (parseFloat(vertexA.cords.y) - parseFloat(vertexB.cords.y)),
         z: 0 - (parseFloat(vertexA.cords.z) - parseFloat(vertexB.cords.z)),
-        yaw: 0 - (parseFloat(vertexA.view.yaw) - parseFloat(vertexB.view.yaw)),
         pitch: 0 - (parseFloat(vertexA.view.pitch) - parseFloat(vertexB.view.pitch))
-    },
-    perBlock = objectMap(distance, (value) => {
+    };
+    if (vertexB.view.direction === "anticlockwise") {
+        distance.yaw = -(((360 - parseFloat(vertexB.view.yaw)) + parseFloat(vertexA.view.yaw)) % 360)
+    };
+    if (vertexB.view.direction === "clockwise") {
+        distance.yaw = (((360 - parseFloat(vertexA.view.yaw)) + parseFloat(vertexB.view.yaw)) % 360)
+    };
+
+    let perBlock = objectMap(distance, (value) => {
         return (value / (parseInt(vertexB.time * 25)))
     }),
     tracker = {
@@ -224,6 +247,7 @@ function generatePath(vertexA, vertexB) {
         pitch: parseFloat(vertexA.view.pitch)
     },
     finishedCode = ""
+
 
     for (let i = 0; i <= (parseInt(vertexB.time) * 25); i++) {
         finishedCode += `player.execute("tp @s ${(tracker.x).toFixed(3)} ${(tracker.y).toFixed(3)} ${(tracker.z).toFixed(3)} ${(tracker.yaw).toFixed(1)} ${(tracker.pitch).toFixed(1)}");\nscript.wait(1);\n`
@@ -240,6 +264,7 @@ function generatePath(vertexA, vertexB) {
 
 function generateCode() {
     let vertices = loopVertices();
+    console.log(vertices);
     let code = []
 
     for (let i = 0; i < vertices.length - 1; i++) {
