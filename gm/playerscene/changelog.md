@@ -31,3 +31,6 @@
 
 ## alpha | 0.2.1
 * Fixed major bug where player would be stuck at end of vertex for same amount of time as taken before continuing.
+
+## alpha | 0.3.0
+* Added camera pan direction choice.
