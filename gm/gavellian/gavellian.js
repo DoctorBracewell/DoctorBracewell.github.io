@@ -1,7 +1,7 @@
 function toGavellian(text) {
     return text
     .split("")
-    .map(character => character.charCodeAt(0) == 32 ? " " : String.fromCharCode((parseInt(character.charCodeAt(0)) + 9301)))
+    .map(character => character.charCodeAt(0) == 32 ? " " : String.fromCharCode((parseInt(character.charCodeAt(0)) + 9327)))
     .join("")
 }
 
