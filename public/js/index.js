@@ -1,14 +1,6 @@
-for (let element of document.querySelectorAll(".navbar-link")) {
-    element.addEventListener("click", () => {
-        document.querySelector(`#${element.innerHTML}`).scrollIntoView({block: "start"});
-    });
+let change = () => {
+    let bgcolour = ('#' + (Math.random() * 0xFFFFFF << 0).toString(16));
+    document.body.style.backgroundColor = bgcolour;
 }
-
-if (localStorage.getItem('cookies') === null) {
-    document.querySelector("#cookies-popup").style.display = "flex";
-}
-
-document.querySelector(".cookies-accept").addEventListener("click", () => {
-    localStorage.setItem("cookies", true);
-    document.querySelector("#cookies-popup").style.display = "none";
-})
+change()
+setInterval(change, 2000);
