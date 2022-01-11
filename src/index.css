@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .text-accented {
+    @apply font-bold text-red;
+  }
+  .text-secondary-accented {
+    @apply font-bold text-black;
+  }
+
+  .navbar-link {
+    @apply cursor-pointer text-2xl sm:text-[2em] font-serif h-fit;
+    transition: 0.1s all;
+    line-height: initial;
+  }
+
+  .navbar-link-hover-red {
+    @apply hover:text-accented;
+  }
+
+  .navbar-link-hover-black {
+    @apply hover:text-secondary-accented;
+  }
+
+  .intro-link {
+    @apply text-lg sm:text-xl m-auto text-center cursor-pointer max-w-xs;
+    @apply after:h-7 after:w-7 sm:after:h-10 sm:after:w-10 after:border-b-[3px] after:border-r-[3px] after:border-solid after:border-red after:block after:mx-auto after:-my-1 after:rotate-45;
+    @apply hover:scale-[1.05];
+    transition: 0.2s all;
+  }
+}
