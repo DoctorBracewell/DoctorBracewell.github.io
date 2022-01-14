@@ -14,8 +14,6 @@
     "vite": "^2.7.2"
   },
   "dependencies": {
-    "@splidejs/splide": "^3.6.9",
-    "@splidejs/splide-extension-auto-scroll": "^0.3.3",
     "tsparticles": "^1.38.0"
   }
 }

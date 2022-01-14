@@ -1,5 +1,3 @@
-const { isWhiteSpaceLike } = require("typescript");
-
 module.exports = {
   content: ["./index.html", "./src/**/*.{js,ts}"],
   theme: {
@@ -12,6 +10,7 @@ module.exports = {
       fontFamily: {
         serif: ["Josefin Slab", "Open Sans", "sans-serif"],
         display: ["Yatra One", "serif"],
+        vanilla: ["Pacifico", "cursive"],
       },
     },
   },
