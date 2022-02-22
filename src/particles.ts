@@ -1,6 +1,6 @@
 import { tsParticles } from "tsparticles";
 
-// Set up tsParticles
+// Set up TS particles
 function loadParticles() {
   const SCREEN_AVERAGE = (window.innerHeight + window.innerWidth) / 2;
 
@@ -44,5 +44,6 @@ function loadParticles() {
   });
 }
 
+// Resize event on window to update the amount of particles
 window.addEventListener("resize", loadParticles);
 loadParticles();
