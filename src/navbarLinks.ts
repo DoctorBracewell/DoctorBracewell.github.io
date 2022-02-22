@@ -1,3 +1,4 @@
+import { scrollIntoView } from "seamless-scroll-polyfill";
 import debounce from "lodash/debounce";
 
 // Check if if one (fixed) element is inside another in the viewport.
@@ -36,11 +37,12 @@ window.addEventListener(
 // Set up smooth scrolling for navbar links
 for (const link of [...document.querySelectorAll(".link")]) {
   link.addEventListener("click", () =>
-    document
-      .querySelector("#" + (link as HTMLElement).dataset.section)
-      .scrollIntoView({
+    scrollIntoView(
+      document.querySelector("#" + (link as HTMLElement).dataset.section),
+      {
         block: "start",
         behavior: "smooth",
-      })
+      }
+    )
   );
 }
