@@ -1,4 +1,4 @@
-<h1 align="center">Welcome to [brace.dev](https://brace.dev)</h1>
+<h1 align="center">Welcome to <a href="https://brace.dev">brace.dev</a></h1>
 <p>
   <a href="#" target="_blank">
     <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
