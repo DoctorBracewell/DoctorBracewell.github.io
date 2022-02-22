@@ -15,5 +15,3 @@
 
 * Website: https://brace.dev
 * Github: [@DoctorBracewell](https://github.com/DoctorBracewell)
-
-⭐️ me, maybe?
