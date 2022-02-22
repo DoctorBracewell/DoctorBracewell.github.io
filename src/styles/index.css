@@ -11,7 +11,7 @@
   }
 
   .navbar-link {
-    @apply cursor-pointer text-2xl sm:text-[2em] font-serif h-fit;
+    @apply cursor-pointer text-2xl sm:text-[2em] font-serif h-fit sm:mr-10 mb-4 sm:mb-0;
     transition: 0.1s all;
     line-height: initial;
   }
@@ -29,5 +29,27 @@
     @apply after:h-7 after:w-7 sm:after:h-10 sm:after:w-10 after:border-b-[3px] after:border-r-[3px] after:border-solid after:border-red after:block after:mx-auto after:-my-1 after:rotate-45;
     @apply hover:scale-[1.05];
     transition: 0.2s all;
+  }
+
+  .image-tilt:hover {
+    transition: 0.5s all;
+    transform: rotate3d(1, -1, 0, 10deg);
+  }
+
+  /* https://nerdcowboy.com/blog/sliding-underlined-links/ */
+  .sliding-underline {
+    text-decoration: none;
+    background-image: linear-gradient(#faf0f0, #faf0f0);
+    background-size: 0% 0.1em;
+    background-position-y: 100%;
+    background-position-x: 0%;
+    background-repeat: no-repeat;
+    transition: background-size 0.2s ease-in-out;
+  }
+
+  .sliding-underline:hover,
+  .sliding-underline:focus,
+  .sliding-underline:active {
+    background-size: 100% 0.1em;
   }
 }
