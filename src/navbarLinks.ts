@@ -1,7 +1,7 @@
 import { scrollIntoView } from "seamless-scroll-polyfill";
 import debounce from "lodash/debounce";
 
-// Check if if one (fixed) element is inside another in the viewport.
+// Check if one (fixed) element is inside another in the viewport.
 function elementInsideBox(element1: Element, element2: Element) {
   const [box1, box2] = [element1, element2].map((element) =>
     element.getBoundingClientRect()
