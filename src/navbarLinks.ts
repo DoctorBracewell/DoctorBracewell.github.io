@@ -37,6 +37,7 @@ window.addEventListener(
 // Set up smooth scrolling for navbar links
 for (const link of [...document.querySelectorAll(".link")]) {
   link.addEventListener("click", () =>
+    // poyfill for webkit/safari
     scrollIntoView(
       document.querySelector("#" + (link as HTMLElement).dataset.section),
       {
