@@ -5,7 +5,7 @@ module.exports = {
       backgroundImage: {
         home: "url('/icon/home.svg')",
         github: "url('/icon/github.svg')",
-        discord: "url('/icon/discord.svg')",
+        code: "url('/icon/code.svg')",
       },
       colors: {
         black: "#090a0b",

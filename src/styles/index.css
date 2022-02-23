@@ -52,4 +52,19 @@
   .sliding-underline:active {
     background-size: 100% 0.1em;
   }
+
+  :root {
+    --copy-visibility: 0;
+    --copy-left: 0px;
+    --copy-transition: left;
+  }
+
+  #copy-tag::after {
+    @apply relative text-white text-sm inline-block;
+    content: "copied!";
+    transition: 0.5s var(--copy-transition);
+    opacity: var(--copy-visibility);
+    left: var(--copy-left);
+    bottom: 0.2rem;
+  }
 }
