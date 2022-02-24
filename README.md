@@ -5,7 +5,7 @@
   </a>
 </p>
 
-> Portfolio website built with HTML, vanilla JavaScript and Tailwind CSS.
+> Portfolio website built with HTML, vanilla JavaScript and Tailwind CSS and bundled with Vite.
 
 ### 🏠 [Homepage](https://brace.dev)
 
