@@ -26,7 +26,7 @@ function updateHoverColours() {
   }
 }
 
-// Use lodash's debounce function to update hover colours when the use stops scrolling
+// Use lodash's debounce function to update hover colours when the user stops scrolling
 window.addEventListener(
   "scroll",
   debounce(updateHoverColours, 100, {
