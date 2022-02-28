@@ -1,6 +1,6 @@
 import VanillaTilt from "vanilla-tilt";
 
-VanillaTilt.init(Array.from(document.querySelectorAll(".image-tilt")), {
+VanillaTilt.init([...document.querySelectorAll(".image-tilt"]), {
   reverse: true,
   max: 7,
   speed: 400,
