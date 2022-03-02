@@ -8,6 +8,20 @@
       content="I'm Brace, a full-stack web developer from London, UK, specialising in front-end technologies."
     />
 
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-B1NYXHL16W"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-B1NYXHL16W");
+    </script>
+
     
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -19,12 +33,13 @@
 
     <link rel="icon" href="favicon.ico" />
     <title>DrBracewell</title>
-    <script type="module" crossorigin src="/assets/index.9cf50986.js"></script>
+    <script type="module" crossorigin src="/assets/index.8bac80e9.js"></script>
     <link rel="modulepreload" href="/assets/vendor.173ccee7.js">
     <link rel="stylesheet" href="/assets/index.6117dd60.css">
   </head>
   <body class="text-white font-serif">
     <!-- Navbar -->
+
     <nav
       class="fixed flex flex-col sm:flex-row justify-between top-6 right-6 sm:top-8 sm:right-8 z-50 text-right"
     >
@@ -46,6 +61,7 @@
     </nav>
 
     <!-- Welcome Screen -->
+
     <div
       class="h-screen w-screen bg-black fixed -z-50"
       id="particles-container"
@@ -191,6 +207,11 @@
 
       <p class="m-auto max-w-[80%] mt-7 mb-14 md:my-10 text-xs md:text-[1rem]">
         Magic touches:
+        <a
+          href="https://vitejs.dev/"
+          class="underline hover:text-red transition-colors"
+          >Vite</a
+        >,
         <a
           href="https://micku7zu.github.io/vanilla-tilt.js/"
           class="underline hover:text-red transition-colors"
