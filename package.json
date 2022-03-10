@@ -1,15 +1,11 @@
 {
   "name": "drbracewell.dev",
-  "version": "1.1.0",
+  "version": "1.0.0",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "predeploy": "git commit -a",
-    "deploy": "npm version",
-    "deploy-patch": "npm run deploy -- patch",
-    "deploy-minor": "npm run deploy -- minor",
-    "deploy-major": "npm run deploy -- major"
+    "deploy": "release-it"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.178",
