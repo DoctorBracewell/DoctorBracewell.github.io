@@ -1,6 +1,8 @@
 name: Build and Deploy
 
-on: published
+on:
+  release:
+    types: [published]
 
 jobs:
   build-and-deploy:
