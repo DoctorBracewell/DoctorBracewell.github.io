@@ -1,5 +1,7 @@
 name: Build and Deploy
-on: [published]
+
+on: published
+
 jobs:
   build-and-deploy:
     concurrency: ci-${{ github.ref }}
