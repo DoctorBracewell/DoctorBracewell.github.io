@@ -46,4 +46,6 @@ function loadParticles() {
 
 // Resize event on window to update the amount of particles
 window.addEventListener("resize", loadParticles);
+
+// Initial particle load
 loadParticles();
