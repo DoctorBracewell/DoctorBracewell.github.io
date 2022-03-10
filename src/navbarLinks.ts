@@ -17,11 +17,11 @@ function updateHoverColours() {
   const navbarLinks = [...document.querySelectorAll(".navbar-link")];
 
   for (const box of redBackgrounds) {
-    const insideBox = elementInsideBox(navbar, box);
+    const isInsideBox = elementInsideBox(navbar, box);
 
     for (const link of navbarLinks) {
-      if (insideBox) link.classList.add("navbar-link-hover-black");
-      if (!insideBox) link.classList.remove("navbar-link-hover-black");
+      if (isInsideBox) link.classList.add("navbar-link-hover-black");
+      if (!isInsideBox) link.classList.remove("navbar-link-hover-black");
     }
   }
 }
