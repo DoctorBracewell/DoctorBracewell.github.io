@@ -1,12 +1,15 @@
 {
   "name": "drbracewell.dev",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "predeploy": "npm run build",
-    "deploy": "echo www.brace.dev > ./dist/CNAME && gh-pages -d dist"
+    "predeploy": "git commit -a",
+    "deploy": "npm version",
+    "deploy-patch": "npm run deploy -- patch",
+    "deploy-minor": "npm run deploy -- minor",
+    "deploy-major": "npm run deploy -- major"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.178",
