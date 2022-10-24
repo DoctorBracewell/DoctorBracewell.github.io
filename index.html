@@ -40,26 +40,36 @@
   </head>
   <body class="text-white font-serif">
     <!-- Navbar -->
+    <div class="fixed flex w-full z-50">
+      <div class="m-6">
+        <a href="https://www.buymeacoffee.com/drbracewell" target="_blank"
+          ><img
+            src="https://cdn.buymeacoffee.com/buttons/v2/default-red.png"
+            alt="Buy Me A Coffee"
+            style="height: 60px !important; width: 217px !important"
+        /></a>
+      </div>
 
-    <nav
-      class="fixed flex flex-col sm:flex-row justify-between top-6 right-6 sm:top-8 sm:right-8 z-50 text-right"
-    >
-      <span
-        data-section="welcome"
-        class="link navbar-link navbar-link-hover-red"
-        >welcome</span
+      <nav
+        class="absolute flex flex-col sm:flex-row justify-between top-6 right-6 sm:top-8 sm:right-8 text-right"
       >
-      <span
-        data-section="portfolio"
-        class="link navbar-link navbar-link-hover-red"
-        >portfolio</span
-      >
-      <span
-        data-section="contact"
-        class="link navbar-link navbar-link-hover-red m-0"
-        >contact</span
-      >
-    </nav>
+        <span
+          data-section="welcome"
+          class="link navbar-link navbar-link-hover-red"
+          >welcome</span
+        >
+        <span
+          data-section="portfolio"
+          class="link navbar-link navbar-link-hover-red"
+          >portfolio</span
+        >
+        <span
+          data-section="contact"
+          class="link navbar-link navbar-link-hover-red m-0"
+          >contact</span
+        >
+      </nav>
+    </div>
 
     <!-- Welcome Screen -->
 
